@@ -43,7 +43,7 @@ configuratin base de données :
 cp .env.example .env
 
 Modifiez le fichier .env pour définir les accès MySQL :
-DATABASE_URL="mysql://root:password@127.0.0.1:3306/efm_db"
+DATABASE_URL=""
 
 4. Démarrer le projet
 Générez les clés de sécurité et la base de données :
@@ -66,7 +66,8 @@ Push la branche : git push origin feature-nouvelle-fonctionnalite
 Ouvre une pull request
 
 🛡️ Sécurité
-Nous suivons les bonnes pratiques de sécurité. Pour signaler une vulnérabilité, merci de contacter l'équipe via GitHub.
+Nous suivons les bonnes pratiques de sécurité. 
+Pour signaler une vulnérabilité, merci de contacter l'équipe via GitHub.
 
 👥 Auteurs
 Nom 1 - Développeur Backend
