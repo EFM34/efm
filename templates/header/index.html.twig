@@ -2,6 +2,8 @@
     <div class="top-header" style="">
         <div class="container">
             <div class="row align-items-center">
+            
+                {# Départ div Top Nav #}
                 <div class="col-md-6">
                     <div class="d-flex align-items-center justify-content-center justify-content-md-start">
                         <div class="me-3">
@@ -49,6 +51,9 @@
                         </ul>
                     </div>
                 </div>
+                {# Fin div Top Nav #}
+
+                {# Compe connexion & déconnexion #}
                 <div class="col-md-6">
                     <div class="text-center text-md-end">
                         <ul class="header_list">
@@ -64,26 +69,44 @@
                                         <span >Wishlist</span>
                                 </a>
                             </li>
-                            <li>
-                                <a href="/signin">
-                                    <i class="ti-user"></i>
-                                    <span >Signin</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/signup">
-                                    <i class="ti-user"></i>
-                                        <span >Signup</span>
-                                </a>
-                            </li>
+                            {% if app.user %}
+                                <li>
+                                    <a href="{{ path('app_account') }}">
+                                        <i class="ti-user"></i>
+                                        <span >Mon Compte</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('app_logout') }}">
+                                        <i class="ti-user"></i>
+                                        <span >Déconnexion</span>
+                                    </a>
+                                </li>
+                            {% else %}
+                                <li>
+                                    <a href="{{ path('app_login') }}">
+                                            <i class="ti-user"></i>
+                                            <span>Se connecter</span>
+                                        </a>
+                                    </li>
+                                <li>
+                                    <a href="{{ path('app_register') }}">
+                                        <i class="ti-user"></i>
+                                            <span>S'inscrire</span>
+                                    </a>
+                                </li>
+                            {% endif %}
                             <li></li>
                             <li></li>
                         </ul>
                     </div>
                 </div>
+                {# Fin div Compe connexion & déconnexion #}
             </div>
         </div>
     </div>
+
+    {# Navigation Header Menu #}
     <div class="bottom_header dark_skin main_menu_uppercase">
         <div class="container">
             <nav class="navbar navbar-expand-lg">
@@ -103,12 +126,13 @@
                                     <li><a class="dropdown-item nav-link nav_item" href="/about">About Us</a></li>
                                     <li><a class="dropdown-item nav-link nav_item" href="/contact">Contact Us</a></li>
                                     <li><a class="dropdown-item nav-link nav_item" href="/fqa">Faq</a></li>
-                                    <li><a class="dropdown-item nav-link nav_item" href="/signin">Login</a></li>
-                                    <li><a class="dropdown-item nav-link nav_item" href="/signup">Register</a></li>
+                                    <li><a class="dropdown-item nav-link nav_item" href="/login">Login</a></li>
+                                    <li><a class="dropdown-item nav-link nav_item" href="/register">Register</a></li>
                                     <li><a class="dropdown-item nav-link nav_item" href="/terms">Terms and Conditions</a></li>
                                 </ul>
                             </div>
                         </li>
+                        {#  Dropdown Menu #}
                         <li class="dropdown dropdown-mega-menu">
                             <a href="#" data-bs-toggle="dropdown" class="dropdown-toggle nav-link" aria-expanded="false">Products</a>
                             <div class="dropdown-menu">
@@ -231,6 +255,7 @@
                                 </div>
                             </div>
                         </li>
+                        {# Fin Dropdown Menu #}
                         <li class="dropdown dropdown-mega-menu">
                             <a class="nav-link" href="/shop-list">Shop</a>
                         </li>

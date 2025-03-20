@@ -20,6 +20,7 @@ Contrôle de version : Git, GitHub
 
 🌐 Installation & Lancement du Projet
 
+🖥️ Projet developer & teste sur OS Windows
 1. Prérequis
 PHP 8.2
 Composer
