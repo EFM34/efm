@@ -48,11 +48,11 @@ class RegistrationFormType extends AbstractType
                 ],
                 'constraints' => [
                     new IsTrue([
-                        'message' => 'You should agree to our terms.',
+                        'message' => 'Vous devez accepter nos conditions.',
                     ]),
                 ],
                 'row_attr' => [
-                    'class' => 'custome-checkbox d-flex gap-2'
+                    'class' => 'custome-checkbox d-flex gap-4'
                 ]
             ])
             ->add('plainPassword', RepeatedType::class, [
@@ -94,19 +94,19 @@ class RegistrationFormType extends AbstractType
                     ]
                 ]
             )
-            // ->add('register', SubmitType::class, [
-            //     "label" => "Insciption",
-            //     "attr" => [
-            //         "placeholder" => "Insciption",
-            //         "class" => "btn btn-fill-out btn-block",
-            //         "name" => "register",
-            //         "type" => "submit",
-            //     ],
-            //     "row_attr" => [
-            //         "class" => "col-md-12"
-            //     ],
+            ->add('register', SubmitType::class, [
+                "label" => "Insciption",
+                "attr" => [
+                    "placeholder" => "Insciption",
+                    "class" => "btn btn-fill-out btn-block w-100",
+                    "name" => "register",
+                    "type" => "submit",
+                ],
+                "row_attr" => [
+                    "class" => "col-md-12"
+                ],
 
-            // ])
+            ])
         ;
     } 
     public function configureOptions(OptionsResolver $resolver): void
