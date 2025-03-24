@@ -30,7 +30,7 @@
                       required=""
                       name="email"
                       formcontrolname="email"
-                      placeholder="Votre Email"
+                      placeholder="Votre adresse Email ..."
                       class="form-control ng-untouched ng-pristine ng-invalid"
                       autocomplete="email"
                       value="{{ last_username }}"
@@ -43,7 +43,7 @@
                       type="password"
                       formcontrolname="password"
                       name="password"
-                      placeholder="Mot de Passe"
+                      placeholder="Votre Mot de Passe ..."
                       class="form-control ng-untouched ng-pristine ng-invalid"
                       autocomplete="current-password"
                       required />
@@ -54,7 +54,7 @@
                     value="{{ csrf_token('authenticate') }}" />
 
                   <div class="form-group mb-3">
-                    <button type="submit" name="login" class="btn btn-fill-out btn-block">Se connecter</button>
+                    <button type="submit" name="login" class="btn btn-fill-out btn-block w-100">Se connecter</button>
                   </div>
 
                 </form>
@@ -63,7 +63,7 @@
                 </div>
 
                 <div class="form-note text-center">Vous n'avez pas de compte ?
-                  <a href="/register">S'inscrire maintenant</a>
+                  <a href="{{ path('app_register') }}">S'inscrire maintenant</a>
                 </div>
               </div>
             </div>

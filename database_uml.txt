@@ -1,0 +1,148 @@
+
+On créer l'user (en 1eme Position)
+
+1 - User 
+  - civility    string  null yes
+  - full_name   string  null no
+  - email       string  null no
+  - password    string  null no
+
+
+
+
+On doit les créer  la Category apre l'user (en 2eme Position)
+
+3 - Category 
+  - name           string   null no
+  - slug           string   null no
+  - description    string   null yes
+  - products       string   
+  - imageUrls      array    null yes
+  - isMega         boolean  null yes
+  - updated_at     datetime_immutable  null yes 
+  - created_at     datetime_immutable  null no 
+
+php bin/console make:entity Category
+
+
+
+
+
+2 - Product 
+  - name              string    null no 
+  - slug              string    null no 
+  - description       string    null no 
+  - more_description  text      null yes
+  - additionl_infos   text      null yes 
+  - stock             integer   null yes
+  - solde_price       integer   null yes  (ici lui a mis no moi je mise yes )
+  - regular_price     integer   null no 
+  - categories        relation  Entity Category   ManyToMany
+  - relatedProducts   boolean   null no   (reste a rajouter)
+  - reviews  (avis leser sur un produit)  commentaire  string    null no 
+  - brand   (Marque)  string    null yes
+  - imageUrls         array     null no 
+  - isAvailable (status) boolean   null yes
+  - isBestSeller      boolean   null yes
+  - isNewArrival      boolean   null yes
+  - isFeatured        boolean   null yes
+  - isSpecialOffer    boolean   null yes
+  - options           string    null no   (reste a rajouter)
+
+On fait la migration un foit l'entite Product  creéer 
+php bin/console make:migration 
+
+En suite on fait rentre les données dans la bdd 
+php bin/console doctrine:migrations:migrate
+
+
+
+Back Office 
+On instale les outils pour la parti Admin 
+1) composer req admin 
+
+2) php bin/console make:admin:dashboard
+ DashboardController  on est d'accord on fait (entre)
+ src/Controller/Admin/  on est d'accord on fait (entre)
+
+3) https://127.0.0.1:8000/admin  
+    Si il y'a une probleme on doit vider le cache
+    php bin/console cache:clear 
+
+Creation du CRUD  Category 
+1) php bin/console make:admin:crud 
+   [0] App\Entity\Category   (choix 0)
+   [1] App\Entity\Product
+   [2] App\Entity\User
+
+2) [src/Controller/Admin/]
+3) [App\Controller\Admin]
+
+Creation du CRUD  Product 
+1) php bin/console make:admin:crud 
+   [0] App\Entity\Category   
+   [1] App\Entity\Product    (choix 1)
+   [2] App\Entity\User
+
+2) [src/Controller/Admin/]
+3) [App\Controller\Admin]
+
+
+Creation du CRUD  User 
+1) php bin/console make:admin:crud 
+   [0] App\Entity\Category   
+   [1] App\Entity\Product   
+   [2] App\Entity\User        (choix 2)
+
+2) [src/Controller/Admin/]
+3) [App\Controller\Admin]
+
+
+
+Version 
+EasyAdmin (4.24.5)
+Lien pour parametre les DashboardAdmin que soit compatible avec les future version de EasyAdmin
+https://symfony.com/bundles/EasyAdminBundle/current/dashboards.html#dashboard-route
+
+Encodage de mot de passe de L'utilisateur
+
+Hachage de mot de passe avant de stocker dans la BDD
+On ecoute le formuaire pour savoir quand on doit enregistre les mot de passe 
+Dans notre cas ce quand on créer un user et quans on modifie notre mot de passe
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+main.yaml 
+
+name: Copy To Branches
+on:
+  workflow_dispatch:
+jobs:
+  copy-to-branches:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Copy To Branches Action
+        uses: planetoftheweb/copy-to-branches@v1.2
+        env:
+          key: main
