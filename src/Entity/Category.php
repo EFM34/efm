@@ -91,12 +91,12 @@ class Category
         return $this;
     }
 
-    public function getImageUrl(): ?array
+    public function getImageUrl(): ?string
     {
         return $this->imageUrl;
     }
 
-    public function setImageUrl(?array $imageUrl): static
+    public function setImageUrl(?string $imageUrl): static
     {
         $this->imageUrl = $imageUrl;
 
