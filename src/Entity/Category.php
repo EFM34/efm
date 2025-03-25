@@ -165,4 +165,11 @@ class Category
 
         return $this;
     }
+
+
+    public function __toString()
+    {
+        // On return le nom de la category
+        return $this->name;
+    }
 }

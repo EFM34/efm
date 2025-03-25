@@ -2,11 +2,12 @@
 
 namespace App\Entity;
 
-use App\Repository\ProductRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\ProductRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
+
 
 #[ORM\Entity(repositoryClass: ProductRepository::class)]
 class Product
@@ -34,8 +35,6 @@ class Product
     #[ORM\Column(nullable: true)]
     private ?int $stock = null;
 
-    // #[ORM\Column(nullable: true)]
-
     #[ORM\Column(nullable: true)]
     private ?int $solde_price = null;
 
@@ -48,7 +47,6 @@ class Product
     #[ORM\ManyToMany(targetEntity: Category::class, inversedBy: 'products')]
     private Collection $categories;
 
-    // #[ORM\Column(type: Types::ARRAY)]
     #[ORM\Column]
     private array $imageUrls = [];
 
@@ -76,11 +74,13 @@ class Product
     #[ORM\Column]
     private ?\DateTimeImmutable $created_at = null;
 
+
     public function __construct()
     {
         $this->categories = new ArrayCollection();
         $this->setCreatedAt(new \DateTimeImmutable());
     }
+
 
     public function getId(): ?int
     {

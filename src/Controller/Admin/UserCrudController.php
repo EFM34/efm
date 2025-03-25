@@ -47,7 +47,12 @@ class UserCrudController extends AbstractCrudController
         return User::class;
     }
 
-
+    /**
+     * Redirection d'une page ver uns autre
+     *
+     * @param Actions $actions
+     * @return Actions
+     */
     public function configureActions(Actions $actions): Actions
     {
         return $actions
@@ -180,7 +185,9 @@ class UserCrudController extends AbstractCrudController
             }
 
             // On encode le mdp on lui passe l'user et les données reçu
-            $hash = $this->userPasswordHasher->hashPassword($this->getUser(), $password);
+            // $hash = $this->userPasswordHasher->hashPassword($this->getUser(), $password);
+            $hash = $this->userPasswordHasher->hashPassword($form->getData(), $password);
+           
             $form->getData()->setPassword($hash);
 
         };
