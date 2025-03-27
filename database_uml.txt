@@ -1,4 +1,7 @@
 
+Entity 
+php bin/console make:entity User 
+
 On créer l'user (en 1eme Position)
 
 1 - User 
@@ -8,7 +11,8 @@ On créer l'user (en 1eme Position)
   - password    string  null no
 
 
-
+Entity 
+php bin/console make:entity Category
 
 On doit les créer  la Category apre l'user (en 2eme Position)
 
@@ -22,12 +26,14 @@ On doit les créer  la Category apre l'user (en 2eme Position)
   - updated_at     datetime_immutable  null yes 
   - created_at     datetime_immutable  null no 
 
-php bin/console make:entity Category
 
 
 
 
+Entity 
+php bin/console make:entity Product 
 
+On doit les créer  la Category apre l'user (en 3eme Position)
 2 - Product 
   - name              string    null no 
   - slug              string    null no 
@@ -49,6 +55,8 @@ php bin/console make:entity Category
   - isSpecialOffer    boolean   null yes
   - options           string    null no   (reste a rajouter)
 
+
+
 On fait la migration un foit l'entite Product  creéer 
 php bin/console make:migration 
 
@@ -57,6 +65,8 @@ php bin/console doctrine:migrations:migrate
 
 
 
+
+CRUD 
 Back Office 
 On instale les outils pour la parti Admin 
 1) composer req admin 
@@ -111,22 +121,77 @@ On ecoute le formuaire pour savoir quand on doit enregistre les mot de passe
 Dans notre cas ce quand on créer un user et quans on modifie notre mot de passe
 
 
+Entity 
+php bin/console make:entity Setting
+
+On doit les créer  la Category apre l'user (en 4eme Position)
+
+Setting 
+- website_name   string  255 null no
+- description    string  255 null no
+- currency       string  255 null no
+- texe_rate      integer     null yes
+- logo           string  255 null no
+- street         string  255 null no
+- city           string  255 null no 
+- postal_code    string  255 null no 
+- state          string  255 null no 
+- updated_at     datetime_immutable  null yes 
+- created_at     datetime_immutable  null no
+- phone          string   255  null yes 
+- facebookLink   string   255  null yes 
+- youtubeLink    string   255  null yes 
+- instagramLink  string   255  null yes 
+
+On prépare la migration et on l'envois en BDD avec Doctrine ORM
+php bin/console make:migration
+php bin/console doctrine:migrations:migrate
+
+
+
+CRUD 
+On crée le Crud pour Setting 
+php bin/console make:admin:crud 
+
+ Which Doctrine entity are you going to manage with this CRUD controller?:
+  [0] App\Entity\Category
+  [1] App\Entity\Product
+  [2] App\Entity\Setting      (choix 2)
+  [3] App\Entity\User
+
+src/Controller/Admin/SettingCrudController.php"
 
 
 
 
+Entity 
+php bin/console make:entity Sliders
 
+On doit les créer  la Category apre l'user (en 5eme Position)
+Sliders 
 
+- title            string   255  null yes
+- description      string   255  null yes
+- button_text      string   255  null no
+- button_link      string   255  null no
+- imageUrl         string   255  null no
+- updated_at       datetime_immutable   null no
+- created_at       datetime_immutable   null no
 
+1) On prépare  la migration 
+    php bin/console make:migration
 
+2) Et on envoie les données en BDD 
+    php bin/console doctrine:migrations:migrate
 
-
-
-
-
-
-
-
+3) Et en suite on fait le CRUD
+php bin/console make:admin:crud
+  [0] App\Entity\Category
+  [1] App\Entity\Product
+  [2] App\Entity\Setting
+  [3] App\Entity\Sliders       (choix 3)
+  [4] App\Entity\User
+ > 3
 
 
 

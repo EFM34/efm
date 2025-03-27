@@ -1,0 +1,140 @@
+[
+    {
+        "civility": "Mr",
+        "fullName": "John Doe",
+        "email": "johndoe@example.com",
+        "password": "123456"
+    },
+    {
+        "civility": "Mr",
+        "fullName": "Alice Smith",
+        "email": "alicesmith@example.com",
+        "password": "p@ssw0rd"
+    },
+    {
+        "civility": "Mr",
+        "fullName": "Bob Johnson",
+        "email": "bjohnson@example.com",
+        "password": "qwerty"
+    },
+    {
+        "civility": "Mme",
+        "fullName": "Emma Brown",
+        "email": "emmabrown@example.com",
+        "password": "password123"
+    },
+    {
+        "civility": "Mr",
+        "fullName": "Michael Lee",
+        "email": "michaellee@example.com",
+        "password": "ilovemusic"
+    },
+    {
+        "civility": "Mlle",
+        "fullName": "Sophie Davis",
+        "email": "sophiedavis@example.com",
+        "password": "letmein"
+    },
+    {
+        "civility": "Mr",
+        "fullName": "William Chen",
+        "email": "williamchen@example.com",
+        "password": "abc123"
+    },
+    {
+        "civility": "Mme",
+        "fullName": "Linda Nguyen",
+        "email": "lindanguyen@example.com",
+        "password": "pass1234"
+    },
+    {
+        "civility": "Mr",
+        "fullName": "David Wilson",
+        "email": "davidwilson@example.com",
+        "password": "secret"
+    },
+    {
+        "civility": "Mr",
+        "fullName": "Jennifer Brown",
+        "email": "jenniferbrown@example.com",
+        "password": "test123"
+    },
+    {
+        "civility": "Mr",
+        "fullName": "Robert Smith",
+        "email": "robertsmith@example.com",
+        "password": "admin123"
+    },
+    {
+        "civility": "Mme",
+        "fullName": "Grace Lee",
+        "email": "gracelee@example.com",
+        "password": "letmein123"
+    },
+    {
+        "civility": "Mr",
+        "fullName": "Daniel Davis",
+        "email": "davisdaniel@example.com",
+        "password": "hello123"
+    },
+    {
+        "civility": "Mme",
+        "fullName": "Olivia Johnson",
+        "email": "oliviajohnson@example.com",
+        "password": "password1"
+    },
+    {
+        "civility": "Mr",
+        "fullName": "Emily Wilson",
+        "email": "emilywilson@example.com",
+        "password": "1234"
+    },
+    {
+        "civility": "Mlle",
+        "fullName": "Mia Brown",
+        "email": "miabrown@example.com",
+        "password": "qwerty123"
+    },
+    {
+        "civility": "Mr",
+        "fullName": "Ethan Chen",
+        "email": "ethanchen@example.com",
+        "password": "iloveyou"
+    },
+    {
+        "civility": "Mr",
+        "fullName": "Avery Nguyen",
+        "email": "averynguyen@example.com",
+        "password": "123456789"
+    },
+    {
+        "civility": "Mr",
+        "fullName": "Andrew Davis",
+        "email": "andrewdavis@example.com",
+        "password": "letmeinnow"
+    },
+    {
+        "civility": "Mr",
+        "fullName": "Madison Johnson",
+        "email": "madisonjohnson@example.com",
+        "password": "testpassword"
+    },
+    {
+        "civility": "Mr",
+        "fullName": "Jacob Wilson",
+        "email": "jacobwilson@example.com",
+        "password": "adminadmin"
+    },
+    {
+        "civility": "Mr",
+        "fullName": "Abigail Smith",
+        "email": "abigailsmith@example.com",
+        "password": "password1234"
+    },
+    {
+        "civility": "Mlle",
+        "fullName": "Sophia Lee",
+        "email": "sophialee@example.com",
+        "password": "letmeinplz"
+    }
+]

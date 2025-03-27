@@ -9,9 +9,8 @@
                         <div class="me-3">
                             <div class="ddOutOfVision" id="msdrpdd20_msddHolder" style="height: 0px; overflow: hidden; position: absolute;">
                             <select name="countries" class="custome_select" id="msdrpdd20" tabindex="-1">
-                                    <option  value="USD" data-title="USD">USD</option>
                                     <option  value="EUR" data-title="EUR">EUR</option>
-                                    <option  value="GBR" data-title="GBR">GBR</option>
+                                    <option  value="USD" data-title="USD">USD</option>
                             </select>
                             </div>
                             <div class="dd ddcommon borderRadius" id="msdrpdd20_msdd" tabindex="0" style="width: 52px;">
@@ -19,7 +18,7 @@
                                     <span class="divider"></span>
                                         <span class="ddArrow arrowoff"></span>
                                             <span class="ddTitleText" id="msdrpdd20_title">
-                                                <span class="ddlabel">USD</span>
+                                                <span class="ddlabel">EUR</span>
                                                 <span class="description" style="display: none;"></span>
                                             </span>
                                     </div>
@@ -28,16 +27,13 @@
                                 
                                 <div class="ddChild ddchild_ border shadow" id="msdrpdd20_child" style="z-index: 9999; display: none; position: absolute; visibility: visible; height: 99px;">
                                     <ul>
-                                        <li class="enabled _msddli_ selected" title="USD">
-                                            <span class="ddlabel">USD</span>
-                                                <div class="clear"></div>
-                                        </li>
-                                        <li class="enabled _msddli_" title="EUR">
+                                        <li class="enabled _msddli_ selected" title="EUR">
                                             <span class="ddlabel">EUR</span>
                                                 <div class="clear"></div>
                                         </li>
-                                        <li class="enabled _msddli_" title="GBR">
-                                            <span class="ddlabel">GBR</span>
+
+                                        <li class="enabled _msddli_" title="USD">
+                                            <span class="ddlabel">USD</span>
                                                 <div class="clear"></div>
                                         </li>
                                     </ul>
@@ -47,7 +43,9 @@
                         <ul class="contact_detail text-center text-lg-start">
                             <li>
                                 <i class="ti-mobile"></i>
-                                    <span>+33 6 11 90 28 74 </span></li>
+                                    <span>+
+                                    {{ app.session.get("setting").phone }}
+                                    </span></li>
                         </ul>
                     </div>
                 </div>
@@ -106,11 +104,21 @@
         </div>
     </div>
 
-    {# Navigation Header Menu #}
+    {# Logo Navigation Header Menu #}
     <div class="bottom_header dark_skin main_menu_uppercase">
         <div class="container">
             <nav class="navbar navbar-expand-lg">
-                <a class="navbar-brand" href="/"><h2 >E.F.M </h2></a>
+                <a class="navbar-brand" href="/">
+                    {# Logo format Desktop Rond  #}
+                    <img src="/assets/images/setting/1ce0474e75297103b34c724bc6c757d46faa6ace.png" alt="logo" with="60" height="60" srcset=""> 
+                   
+                    {# Ici sera le logo forma Phone E.F.M  #}
+                    {# <img src="/assets/images/setting/6ff5aee694afc8d3ae5d0be6968900387cca8174.png" alt="logo E.F.M" with="100" height="100" srcset="">  #}
+                    
+                    {#  Ici on peux decider quoi afficher entre le nom du site ou le logo  moi je fait le choix du logo #}
+                    {# <h2>E.F.M </h2> #}
+                    {# {{ app.session.get("setting").websiteName }} #}
+                </a>
                     <button type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-expanded="false" class="navbar-toggler collapsed">
                         <span class="ion-android-menu"></span>
                     </button>

@@ -4,128 +4,54 @@
 
 {% block body %}
 
-
+    {#  Debut Sliders #}
     <div class="banner_section slide_medium shop_banner_slider staggered-animation-wrap">
-        <div id="carouselExampleControls" data-bs-ride="carousel"
-            class="carousel slide carousel-fade light_arrow">
+        <div id="carouselExampleControls" data-bs-ride="carousel" class="carousel slide carousel-fade light_arrow">
             <div class="carousel-inner">
-                <div class="carousel-item active background_bg"
-                   
-                    data-img-src="/assets/images/banner1.png"
-                    style="background-image: url(&quot;/assets/images/banner1.png&quot;);">
+            {% for slide in sliders %}
+            <div class="{{loop.index < 2 ? 'carousel-item background_bg active' : 'carousel-item background_bg'}}"
+                data-img-src="/assets/images/sliders/{{slide.imageUrl}}" style="background-image: url('/assets/images/sliders/{{slide.imageUrl}}');">
                     <div class="banner_slide_content">
                         <div class="container">
                             <div class="row">
                                 <div class="col-lg-7 col-9">
                                     <div class="banner_content overflow-hidden">
-                                        <h5 data-animation="slideInLeft"
-                                            data-animation-delay="0.5s"
-                                            class="mb-3 staggered-animation font-weight-light animated slideInLeft"
-                                            style="animation-delay: 0.5s; opacity: 1;">50% off in all products</h5>
-                                        <h2  data-animation="slideInLeft"
-                                            data-animation-delay="1s" class="staggered-animation animated slideInLeft"
-                                            style="animation-delay: 1s; opacity: 1;">Man Fashion</h2><a
-                                             data-animation="slideInLeft"
-                                            data-animation-delay="1.5s"
-                                            class="btn btn-fill-out rounded-0 staggered-animation text-uppercase animated slideInLeft"
-                                            href="http://localhost:4300/"
-                                            style="animation-delay: 1.5s; opacity: 1;">Shop Now</a>
+                                    <h5 data-animation="slideInLeft" data-animation-delay="0.5s" class="mb-3 staggered-animation font-weight-light animated slideInLeft"
+                                        style="animation-delay: 0.5s; opacity: 1;">
+                                        {{ slide.description }}
+                                    </h5>
+                                    <h2 data-animation="slideInLeft" data-animation-delay="1s" class="staggered-animation animated slideInLeft"
+                                        style="animation-delay: 1s; opacity: 1;">
+                                        {{ slide.title }}
+                                    </h2>
+                                    <a data-animation="slideInLeft" data-animation-delay="1.5s" target="_blank" 
+                                        class="btn btn-fill-out rounded-0 staggered-animation text-uppercase animated slideInLeft"
+                                        href="{{ slide.buttonLink }}" style="animation-delay: 1.5s; opacity: 1;">
+                                        {{ slide.buttonText }}
+                                    </a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="carousel-item background_bg"
-                    data-img-src="/assets/images/banner2.png"
-                    style="background-image: url(&quot;/assets/images/banner2.png&quot;);">
-                    <div class="banner_slide_content">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-lg-7 col-9">
-                                    <div class="banner_content overflow-hidden">
-                                        <h5 data-animation="slideInLeft"
-                                            data-animation-delay="0.5s"
-                                            class="mb-3 staggered-animation font-weight-light animated slideInLeft"
-                                            style="animation-delay: 0.5s; opacity: 1;">Get up to 50% off Today Only!
-                                        </h5>
-                                        <h2  data-animation="slideInLeft"
-                                            data-animation-delay="1s" class="staggered-animation animated slideInLeft"
-                                            style="animation-delay: 1s; opacity: 1;">Woman Fashion</h2><a
-                                             data-animation="slideInLeft"
-                                            data-animation-delay="1.5s"
-                                            class="btn btn-fill-out rounded-0 staggered-animation text-uppercase animated slideInLeft"
-                                            href="http://localhost:4300/"
-                                            style="animation-delay: 1.5s; opacity: 1;">Shop Now</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item background_bg"
-                    data-img-src="/assets/images/banner3.png"
-                    style="background-image: url(&quot;/assets/images/banner3.png&quot;);">
-                    <div class="banner_slide_content">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-lg-7 col-9">
-                                    <div class="banner_content overflow-hidden">
-                                        <h5 data-animation="slideInLeft"
-                                            data-animation-delay="0.5s"
-                                            class="mb-3 staggered-animation font-weight-light animated slideInLeft"
-                                            style="animation-delay: 0.5s; opacity: 1;">Taking your Viewing Experience to
-                                            Next Level</h5>
-                                        <h2  data-animation="slideInLeft"
-                                            data-animation-delay="1s" class="staggered-animation animated slideInLeft"
-                                            style="animation-delay: 1s; opacity: 1;">Summer Sale</h2><a
-                                            data-animation="slideInLeft"
-                                            data-animation-delay="1.5s"
-                                            class="btn btn-fill-out rounded-0 staggered-animation text-uppercase animated slideInLeft"
-                                            href="http://localhost:4300/"
-                                            style="animation-delay: 1.5s; opacity: 1;">Shop Now</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item background_bg"
-                    data-img-src="/assets/images/banner4.png"
-                    style="background-image: url(&quot;/assets/images/banner4.png&quot;);">
-                    <div class="banner_slide_content">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-lg-7 col-9">
-                                    <div class="banner_content overflow-hidden">
-                                        <h5 data-animation="slideInLeft"
-                                            data-animation-delay="0.5s"
-                                            class="mb-3 staggered-animation font-weight-light animated slideInLeft"
-                                            style="animation-delay: 0.5s; opacity: 1;">Taking your Viewing Experience to
-                                            Next Level</h5>
-                                        <h2 data-animation="slideInLeft"
-                                            data-animation-delay="1s" class="staggered-animation animated slideInLeft"
-                                            style="animation-delay: 1s; opacity: 1;">Summer Sale</h2><a
-                                            data-animation="slideInLeft"
-                                            data-animation-delay="1.5s"
-                                            class="btn btn-fill-out rounded-0 staggered-animation text-uppercase animated slideInLeft"
-                                            href="http://localhost:4300/"
-                                            style="animation-delay: 1.5s; opacity: 1;">Shop Now</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
+            {# Fin Images Sliders #}
+
+            {#  Buttons navigation Sliders #}
             <a href="#carouselExampleControls" role="button" data-bs-slide="prev" class="carousel-control-prev">
                 <i class="ion-chevron-left"></i>
             </a>
             <a href="#carouselExampleControls" role="button" data-bs-slide="next" class="carousel-control-next">
                 <i class="ion-chevron-right"></i>
             </a>
+            {# Fin  Buttons navigation Sliders #}
         </div>
     </div>
+    {#  Fin  Sliders  #}
+
+    {# Main  #}
     <div class="main_content">
         <div class="section pb_20">
             <div class="container">
@@ -2343,6 +2269,6 @@
             </div>
         </div>
     </div>
-
+    {# Fin Main  #}
 
 {% endblock %}
