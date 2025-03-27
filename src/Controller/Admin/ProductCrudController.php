@@ -73,7 +73,6 @@ class ProductCrudController extends AbstractCrudController
             ->setUploadedFileNamePattern('[randomhash].[extension]')
             // Sa sera obligatoirment que on sera sur Crud la creation
             ->setRequired($pageName === Crud::PAGE_NEW)
-            ,
             ->setUploadedFileNamePattern('[randomhash].[extension]'),
 
             MoneyField::new('solde_price')->setCurrency("EUR"),

@@ -55,9 +55,8 @@ class CategoryCrudController extends AbstractCrudController
             ->setUploadDir("/public/assets/images/categories")
             ->setUploadedFileNamePattern('[randomhash].[extension]')
              // L'image sera obligatoirment que on sera sur la creation
-             ->setRequired($pageName === Crud::PAGE_NEW)
+             ->setRequired($pageName === Crud::PAGE_NEW),
 
         ];
     }
-    
 }
