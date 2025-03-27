@@ -74,6 +74,8 @@ class ProductCrudController extends AbstractCrudController
             // Sa sera obligatoirment que on sera sur Crud la creation
             ->setRequired($pageName === Crud::PAGE_NEW)
             ,
+            ->setUploadedFileNamePattern('[randomhash].[extension]'),
+
             MoneyField::new('solde_price')->setCurrency("EUR"),
             MoneyField::new('regular_price')->setCurrency("EUR"),
             IntegerField::new('stock'),
