@@ -5,6 +5,8 @@ namespace App\Controller\Admin;
 use App\Entity\User;
 use App\Entity\Product;
 use App\Entity\Category;
+use App\Entity\Setting;
+use App\Entity\Sliders;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
@@ -61,5 +63,11 @@ class DashboardController extends AbstractDashboardController
 
         // yield MenuItem::section('Users');
         yield MenuItem::linkToCrud('Users', 'fas fa-users', User::class);
+
+        // yield MenuItem::section('Sliders');
+        yield MenuItem::linkToCrud('Sliders', 'fas fa-image', Sliders::class);
+
+        // yield MenuItem::section('Settings');
+        yield MenuItem::linkToCrud('Settings', 'fas fa-gear', Setting::class);
     }
 }

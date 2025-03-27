@@ -70,8 +70,10 @@ class ProductCrudController extends AbstractCrudController
             ->setBasePath("assets/images/products")
             // On telecharge l'images 
             ->setUploadDir("/public/assets/images/products")
-            ->setUploadedFileNamePattern('[randomhash].[extension]'),
-            // ->setRequired(false)
+            ->setUploadedFileNamePattern('[randomhash].[extension]')
+            // Sa sera obligatoirment que on sera sur Crud la creation
+            ->setRequired($pageName === Crud::PAGE_NEW)
+            ,
             MoneyField::new('solde_price')->setCurrency("EUR"),
             MoneyField::new('regular_price')->setCurrency("EUR"),
             IntegerField::new('stock'),

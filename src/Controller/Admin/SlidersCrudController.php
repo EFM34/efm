@@ -2,27 +2,25 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Category;
+use App\Entity\Sliders;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
-use EasyCorp\Bundle\EasyAdminBundle\Field\SlugField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 
-class CategoryCrudController extends AbstractCrudController
+class SlidersCrudController extends AbstractCrudController
 {
     public static function getEntityFqcn(): string
     {
-        return Category::class;
+        return Sliders::class;
     }
 
 
-    /**
+     /**
      * Redirection d'une page ver uns autre
      *
      * @param Actions $actions
@@ -38,24 +36,25 @@ class CategoryCrudController extends AbstractCrudController
             // Sur la page d'édition on propose l'affichage des détails
             ->add(Crud::PAGE_EDIT, Action::DETAIL);
     } 
+    
 
-  
+ 
     public function configureFields(string $pageName): iterable
     {
         return [
             IdField::new('id')->hideOnForm(),
-            TextField::new('name'),
-            SlugField::new('slug')->setTargetFieldName('name'),
-            TextEditorField::new('description'),
-            BooleanField::new('isMega'),
+            TextField::new('title'),
+            TextField::new('description'),
+            TextField::new('button_text'),
+            TextField::new('button_link'),
             ImageField::new('imageUrl')
             // On met l'url des l'images 
-            ->setBasePath("assets/images/categories")
+            ->setBasePath("assets/images/sliders")
             // On telecharge l'images 
-            ->setUploadDir("/public/assets/images/categories")
+            ->setUploadDir("/public/assets/images/sliders")
             ->setUploadedFileNamePattern('[randomhash].[extension]')
-             // L'image sera obligatoirment que on sera sur la creation
-             ->setRequired($pageName === Crud::PAGE_NEW)
+            // L'image sera obligatoirment que on sera sur la creation
+            ->setRequired($pageName === Crud::PAGE_NEW),
         ];
     }
     

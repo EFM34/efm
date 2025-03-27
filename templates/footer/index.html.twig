@@ -6,27 +6,37 @@
                     <div class="widget">
                         <div class="footer_logo">
                             <a href="#">
-                                <h2>E.F.M</h2>
+                                <h2>
+                                  {# Logo format Desktop Rond  #}
+                                {# <img src="/assets/images/setting/Logo E.F.M_blanc.png" alt="logo" with="150" height="150" srcset="">  #}
+                              
+                                {# Ici sera le logo forma Phone E.F.M  #}
+                                {# <img src="/assets/images/setting/6ff5aee694afc8d3ae5d0be6968900387cca8174.png" alt="logo E.F.M" with="100" height="100" srcset="">  #}
+                                
+                                {#  Ici on peux decider quoi afficher entre le nom du site ou le logo  moi je fait le choix du logo #}
+                                {# <h2>E.F.M </h2> #}
+                                {{ app.session.get("setting").websiteName }}
+                                </h2>
                             </a>
                         </div>
-                        <p> Retrouvez tous les accessoires et habits pour femmes, jeunes filles etc... </p>
+                        <p>  {{ app.session.get("setting").description }}</p>
                     </div>
                     <div class="widget">
                         <ul class="social_icons social_white">
                             <li>
-                                <a target="_blank" href="https://facebook.com">
+                                <a target="_blank" href="{{ app.session.get("setting").facebookLink }}">
                                     <i class="ion-social-facebook"></i>
                                 </a>
                             </li>
                             <li></li>
                             <li></li>
                             <li>
-                                <a target="_blank" href="https://www.youtube.com/channel/UCkqALrIVPEyGnnbmiFl3lQA/?sub_confirmation=1">
+                                <a target="_blank" href="{{ app.session.get("setting").youtubeLink }}">
                                     <i class="ion-social-youtube-outline"></i>
                                 </a>
                             </li>
                             <li>
-                                <a target="_blank" href="https://www.instagram.com/mudey_formation/">
+                                <a target="_blank" href="{{ app.session.get("setting").instagramLink }}">
                                     <i class="ion-social-instagram-outline"></i>
                                 </a>
                             </li>
@@ -35,57 +45,57 @@
                 </div>
                 <div class="col-lg-2 col-md-3 col-sm-6">
                     <div class="widget">
-                        <h6  class="widget_title">Useful Links</h6>
+                        <h6  class="widget_title">Liens utiles</h6>
                         <ul class="widget_links">
                             <li>
                                 <a href="/page/a-propos-de-nous-shop">A Propos de nous</a>
                             </li>
                             <li>
-                                <a href="/page/nos-services-jstore">Nos services</a>
+                                <a href="/page/nos-services-E.F.M">Nos services</a>
                             </li>
                             <li>
                                 <a href="/page/contactez-nous-category">Contactez-Nous</a>
                             </li>
                             <li>
-                                <a href="/page/nos-partenaires-mudey">Nos partenaires</a>
+                                <a href="/page/nos-partenaires">Nos partenaires</a>
                             </li>
                             <li>
-                                <a href="/page/mentions-lgales-espero">Mentions légales</a>
+                                <a href="/page/mentions-lgales-E.F.M">Mentions légales</a>
                             </li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-3 col-sm-6">
                     <div class="widget">
-                        <h6 class="widget_title">Category</h6>
+                        <h6 class="widget_title">Categories</h6>
                         <ul class="widget_links">
                             <li>
-                                <a href="#">Men</a></li>
+                                <a href="#">Homme</a></li>
                             <li>
-                                <a href="#">Woman</a></li>
+                                <a href="#">Femme</a></li>
                             <li>
-                                <a href="#">Kids</a></li>
+                                <a href="#">Enfant</a></li>
                             <li>
-                                <a href="#">Best Saller</a>
+                                <a href="#">Meilleur vente</a>
                             </li>
                             <li>
-                                <a href="#">New Arrivals</a>
+                                <a href="#">Nouveautés</a>
                             </li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-6 col-sm-6">
                     <div class="widget">
-                        <h6 class="widget_title">My Account</h6>
+                        <h6 class="widget_title">Mon Compte</h6>
                         <ul class="widget_links">
                             <li>
-                                <a href="/account">My Account</a></li>
+                                <a href="{{ path('app_account') }}">Mon Compte</a></li>
                             <li>
                                 <a href="/terms">Terms</a></li>
                             <li>
-                                <a href="/signin">SignIn</a></li>
+                                <a href="{{ path('app_login') }}">Se connecter</a></li>
                             <li>
-                                <a href="/signup">Signup</a></li>
+                                <a href="{{ path('app_register') }}">S'inscrire</a></li>
                         </ul>
                     </div>
                 </div>
@@ -103,7 +113,9 @@
                             </li>
                             <li>
                                 <i class="ti-mobile"></i>
-                                <p>+33 6 11 90 28 74</p>
+                                <p>+
+                                 {{ app.session.get("setting").phone }}
+                                </p>
                             </li>
                         </ul>
                     </div>
