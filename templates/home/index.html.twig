@@ -35,7 +35,7 @@
                         </div>
                     </div>
                 </div>
-                {% endfor %}
+            {% endfor %}
             </div>
             {# Fin Images Sliders #}
 
@@ -53,32 +53,31 @@
 
     {# Main  #}
     <div class="main_content">
+
+        {# Depart Collection #}
         <div class="section pb_20">
             <div class="container">
                 <div class="row">
+                {# {% set collections = 'collections' %} #}
+                {% for collection in collections %}
                     <div class="col-md-6">
                         <div class="single_banner">
-                            <img alt="shop_banner_img1" src="/assets/images/collections/14c2d20a5a51ef3cbc3d396fe0ca2e8b3142f6a6.png">
+                            <img alt="shop_banner_img1" src="/assets/images/collections/{{ collection.imageUrl }}" />
                                 <div class="single_banner_info">
-                                    <h5 class="single_bn_title1">Super Sale</h5>
-                                    <h3 class="single_bn_title">New Collection</h3>
-                                    <a class="single_bn_link" href="http://localhost:4400/">Shop Now</a>
+                                    <h5 class="single_bn_title1">{{ collection.description }}</h5>
+                                    <h3 class="single_bn_title">{{ collection.title }}</h3>
+                                    <a class="single_bn_link" target="_blank"
+                                        href="{{ collection.buttonLink }}">{{ collection.buttonText }}
+                                    </a>
                                 </div>
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="single_banner">
-                            <img alt="shop_banner_img1" src="/assets/images/collections/14c2d20a5a51ef3cbc3d396fe0ca2e8b3142f6a6.png">
-                                <div class="single_banner_info">
-                                    <h5 class="single_bn_title1">Super Sale</h5>
-                                    <h3 class="single_bn_title">New Collection</h3>
-                                    <a class="single_bn_link" href="http://localhost:4400/">Shop Now</a>
-                                </div>
-                        </div>
-                    </div>
+                {% endfor %}
                 </div>
             </div>
         </div>
+        {# Fin Collection #}
+
         <div class="section small_pt pb_70">
             <div class="container">
                 <div class="row justify-content-center">

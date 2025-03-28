@@ -167,7 +167,7 @@ src/Controller/Admin/SettingCrudController.php"
 Entity 
 php bin/console make:entity Sliders
 
-On doit les créer  la Category apre l'user (en 5eme Position)
+On doit les créer  la Sliders apre l'user (en 5eme Position)
 Sliders 
 
 - title            string   255  null yes
@@ -192,6 +192,45 @@ php bin/console make:admin:crud
   [3] App\Entity\Sliders       (choix 3)
   [4] App\Entity\User
  > 3
+
+
+
+
+
+Entity 
+php bin/console make:entity Collection
+
+On doit les créer  la Collection  apre l'user (en 6eme Position)
+Collection
+- title         string  255 null no 
+- description   string  255 null no 
+- button_text   string  255 null no 
+- button_link   string  255 null no
+- imageUrl      string  255 null no
+- updated_at    datetime_immutable     null  yes
+- created_at    datetime_immutable     null  no
+
+
+1) On prépare  la migration 
+    php bin/console make:migration
+
+2) Et on envoie les données en BDD 
+    php bin/console doctrine:migrations:migrate
+
+3) Et en suite on fait le CRUD
+php bin/console make:admin:crud
+
+ Which Doctrine entity are you going to manage with this CRUD controller?:
+  [0] App\Entity\Category
+  [1] App\Entity\Collections       (choix 1)
+  [2] App\Entity\Product
+  [3] App\Entity\Setting
+  [4] App\Entity\Sliders
+  [5] App\Entity\User
+ > 1
+
+
+
 
 
 
