@@ -231,6 +231,57 @@ php bin/console make:admin:crud
 
 
 
+Entity 
+php bin/console make:entity Page
+
+On doit les créer  la Page  apre l'user (en 7eme Position)
+Page
+- title       string    255  null  no 
+- slug        string    255  null  no 
+- content     text           null  no 
+- isHead      boolean        null  yes
+- isFoot      boolean        null  yes
+- updated_at  datetime_immutable    null  yes 
+- created_at  datetime_immutable    null  no 
+
+1) On prépare  la migration 
+    php bin/console make:migration
+
+2) Et on envoie les données en BDD 
+    php bin/console doctrine:migrations:migrate
+
+3) Et en suite on fait le CRUD
+php bin/console make:admin:crud 
+
+
+ Which Doctrine entity are you going to manage with this CRUD controller?:
+  [0] App\Entity\Category
+  [1] App\Entity\Collection
+  [2] App\Entity\Page               (choix 2)
+  [3] App\Entity\Product
+  [4] App\Entity\Setting
+  [5] App\Entity\Sliders
+  [6] App\Entity\User
+ > 2
+
+cours 89
+Les pages que on doit rediger et créer 
+
+A Propos de nous
+Nos services
+Contactez-Nous
+Nos partenaires
+Mentions légales
+
+90 Lien ver les page du site 
+On prarametre les page dans le HomeController pour afficher les pages
+
+
+
+
+
+
+
 
 
 

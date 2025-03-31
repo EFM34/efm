@@ -47,10 +47,12 @@
                     <div class="widget">
                         <h6  class="widget_title">Liens utiles</h6>
                         <ul class="widget_links">
-                            <li>
-                                <a href="/page/a-propos-de-nous-shop">A Propos de nous</a>
-                            </li>
-                            <li>
+                             {# On recupere les pages depuis la session #}
+                                    {% for page in app.session.get("footerPages") %} 
+                                        <li><a href="/page/{{page.slug}}">{{ page.title }}</a></li>
+                                    {% endfor %}
+                                    
+                            {# <li>
                                 <a href="/page/nos-services-E.F.M">Nos services</a>
                             </li>
                             <li>
@@ -61,7 +63,7 @@
                             </li>
                             <li>
                                 <a href="/page/mentions-lgales-E.F.M">Mentions légales</a>
-                            </li>
+                            </li> #}
                         </ul>
                     </div>
                 </div>

@@ -111,7 +111,7 @@
                 <a class="navbar-brand" href="/">
                     {# Logo format Desktop Rond  #}
                     <img src="/assets/images/setting/1ce0474e75297103b34c724bc6c757d46faa6ace.png" alt="logo" with="60" height="60" srcset=""> 
-                   
+ 
                     {# Ici sera le logo forma Phone E.F.M  #}
                     {# <img src="/assets/images/setting/6ff5aee694afc8d3ae5d0be6968900387cca8174.png" alt="logo E.F.M" with="100" height="100" srcset="">  #}
                     
@@ -131,12 +131,18 @@
                         <a href="#" data-bs-toggle="dropdown" class="dropdown-toggle nav-link active" aria-expanded="false">Pages</a>
                             <div  class="dropdown-menu">
                                 <ul>
-                                    <li><a class="dropdown-item nav-link nav_item" href="/about">About Us</a></li>
+                                    {# On recupere les pages depuis la session #}
+                                    {% for page in app.session.get("headerPages") %} 
+                                        <li><a class="dropdown-item nav-link nav_item" href="/page/{{page.slug}}">{{ page.title }}</a></li>
+                                    {% endfor %}
+
+                                    {#  <li><a class="dropdown-item nav-link nav_item" href="/about">About Us</a></li>
                                     <li><a class="dropdown-item nav-link nav_item" href="/contact">Contact Us</a></li>
                                     <li><a class="dropdown-item nav-link nav_item" href="/fqa">Faq</a></li>
                                     <li><a class="dropdown-item nav-link nav_item" href="/login">Login</a></li>
                                     <li><a class="dropdown-item nav-link nav_item" href="/register">Register</a></li>
                                     <li><a class="dropdown-item nav-link nav_item" href="/terms">Terms and Conditions</a></li>
+                                 #}
                                 </ul>
                             </div>
                         </li>
@@ -312,7 +318,7 @@
                         <div class="search_overlay"></div>
                         <div class="search_overlay"></div>
                         <div class="search_overlay"></div>
-                        <div  class="search_overlay"></div>
+                        <div class="search_overlay"></div>
                     </li>
                     <li  class="dropdown cart_dropdown">
                         <a href="#" data-bs-toggle="dropdown" class="nav-link cart_trigger">

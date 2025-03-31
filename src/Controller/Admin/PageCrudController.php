@@ -1,0 +1,54 @@
+<?php
+
+namespace App\Controller\Admin;
+
+use App\Entity\Page;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
+use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
+use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\SlugField;
+
+class PageCrudController extends AbstractCrudController
+{
+    public static function getEntityFqcn(): string
+    {
+        return Page::class;
+    }
+
+        /**
+     * Redirection d'une page ver uns autre
+     *
+     * @param Actions $actions
+     * @return Actions
+     */
+    public function configureActions(Actions $actions): Actions
+    {
+        return $actions
+            // Sur la page d'édition on propose le retour ver la page d'accueil
+            ->add(Crud::PAGE_EDIT, Action::INDEX)
+             // Sur la page Index on propose l'affichage des détails
+            ->add(Crud::PAGE_INDEX, Action::DETAIL)
+            // Sur la page d'édition on propose l'affichage des détails
+            ->add(Crud::PAGE_EDIT, Action::DETAIL);
+    } 
+    
+    
+ 
+    public function configureFields(string $pageName): iterable
+    {
+        return [
+            IdField::new('id')->hideOnForm(),
+            TextField::new('title'),
+            SlugField::new('slug')->setTargetFieldName('title')->hideOnIndex(),
+            TextEditorField::new('content'),
+            BooleanField::new('isHead'),
+            BooleanField::new('isFoot'),
+        ];
+    }
+   
+}

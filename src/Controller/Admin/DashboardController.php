@@ -8,6 +8,7 @@ use App\Entity\Setting;
 use App\Entity\Sliders;
 use App\Entity\Category;
 use App\Entity\Collection;
+use App\Entity\Page;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
@@ -64,6 +65,10 @@ class DashboardController extends AbstractDashboardController
 
         // yield MenuItem::section('Users');
         yield MenuItem::linkToCrud('Users', 'fas fa-users', User::class);
+
+        // yield MenuItem::section('Sliders');
+        yield MenuItem::linkToCrud('Pages', 'fas fa-file', Page::class);
+
 
         // yield MenuItem::section('Sliders');
         yield MenuItem::linkToCrud('Collections', 'fas fa-panorama', Collection::class);
