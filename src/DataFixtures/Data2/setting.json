@@ -1,0 +1,19 @@
+[
+    {
+        "website_name": "Jstore",
+        "description": "Retrouvez tous les accessoires et habits pour femmes, jeunes filles etc...",
+        "email": "contact@jstore.fr",
+        "taxe_rate": "20",
+        "logo": "9b7930e57c18dd53156795dcd1c0be2ba55b5741.ico",
+        "currency": "EUR",
+        "facebookLink": "https://facebook.com/",
+        "youtubeLink": "https://www.youtube.com/channel/UCkqALrIVPEyGnnbmiFl3lQA/?sub_confirmation=1",
+        "instagramLink": "https://www.instagram.com/mudey_formation/",
+        "phone": "+33 7 49 31 69 74",
+        "street": "96 Rue Symfony",
+        "city": "Paris",
+        "code_postal": "75000",
+        "state": "France",
+        "copyright": "© 2023 All Rights Reserved by Espero-Soft Informatiques"
+    }
+]

@@ -13,6 +13,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TelephoneField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\EmailField;
 
 class SettingCrudController extends AbstractCrudController
 {
@@ -52,6 +53,7 @@ class SettingCrudController extends AbstractCrudController
         return [
             IdField::new('id')->hideOnForm(),
             TextField::new('website_name'),
+            EmailField::new('email'),
             TextField::new('description')->hideOnIndex(),
             IntegerField::new('taxe_rate'),
             ChoiceField::new('currency')->setChoices([
@@ -75,6 +77,7 @@ class SettingCrudController extends AbstractCrudController
             TextField::new('city'),
             TextField::new('postal_code'),
             TextField::new('state'),
+            TextField::new('copyright')->hideOnIndex(),
             
         ];
     }

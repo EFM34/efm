@@ -1,0 +1,23 @@
+[
+    {
+        "title": "Summer Sale",
+        "description": "Taking your Viewing Experience to Next Level",
+        "button_text": "Shop Now",
+        "button_link": "https://mudey.fr/programme/formation-complete-developpeur-web-full-stack",
+        "imageUrl": "1b8986935ff3732e5fe79db8e50a78023cef6889.png"
+    },
+    {
+        "title": "Woman Fashion",
+        "description": "Get up to 50% off Today Only!",
+        "button_text": "Shop Now",
+        "button_link": "https://www.youtube.com/channel/UCkqALrIVPEyGnnbmiFl3lQA",
+        "imageUrl": "facc7c2d46e2e4d487c3a5db13423b520f0a80e7.png"
+    },
+    {
+        "title": "Summer Sale",
+        "description": "Taking your Viewing Experience to Next Level",
+        "button_text": "Shop Now",
+        "button_link": "https://mudey.fr/programme/formation-complete-developpeur-web-full-stack",
+        "imageUrl": "872bf4da174f7f61f7df86ff150fe045770d8eca.png"
+    }
+]

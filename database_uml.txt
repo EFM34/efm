@@ -138,10 +138,12 @@ Setting
 - state          string  255 null no 
 - updated_at     datetime_immutable  null yes 
 - created_at     datetime_immutable  null no
+- email          string   255  null yes
 - phone          string   255  null yes 
 - facebookLink   string   255  null yes 
 - youtubeLink    string   255  null yes 
 - instagramLink  string   255  null yes 
+- copyright      string   255  null yes
 
 On prépare la migration et on l'envois en BDD avec Doctrine ORM
 php bin/console make:migration
@@ -160,6 +162,8 @@ php bin/console make:admin:crud
   [3] App\Entity\User
 
 src/Controller/Admin/SettingCrudController.php"
+
+Tjr au niveux de crud on parametres les champ qui on veux afficher ou traiter les données
 
 
 
@@ -209,7 +213,7 @@ Collection
 - imageUrl      string  255 null no
 - updated_at    datetime_immutable     null  yes
 - created_at    datetime_immutable     null  no
-
+- isMega        boolean                null  yes
 
 1) On prépare  la migration 
     php bin/console make:migration

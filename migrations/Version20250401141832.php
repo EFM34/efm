@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20250327101308 extends AbstractMigration
+final class Version20250401141832 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -20,12 +20,12 @@ final class Version20250327101308 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE setting ADD facebook_link VARCHAR(255) DEFAULT NULL, ADD youtube_link VARCHAR(255) DEFAULT NULL, ADD instagram_link VARCHAR(255) DEFAULT NULL');
+        $this->addSql('ALTER TABLE collection ADD is_mega TINYINT(1) DEFAULT NULL');
     }
 
     public function down(Schema $schema): void
     {
         // this down() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE setting DROP facebook_link, DROP youtube_link, DROP instagram_link');
+        $this->addSql('ALTER TABLE collection DROP is_mega');
     }
 }

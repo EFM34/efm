@@ -19,7 +19,7 @@
                                 </h2>
                             </a>
                         </div>
-                        <p>  {{ app.session.get("setting").description }}</p>
+                        <p>{{ app.session.get("setting").description }}</p>
                     </div>
                     <div class="widget">
                         <ul class="social_icons social_white">
@@ -107,11 +107,15 @@
                         <ul class="contact_info contact_info_light">
                             <li>
                                 <i class="ti-location-pin"></i>
-                                <p>13 Impasse du couhant 34140</p>
+                                <p>
+                                    {{ app.session.get("setting").street }}
+                                    {{ app.session.get("setting").postalCode }}
+                                    {{ app.session.get("setting").city }}
+                                </p>
                             </li>
                             <li>
                                 <i class="ti-email"></i>
-                                <a href="mailto:ensemblefredericmistral@gmail.com">ensemblefredericmistral@gmail.com</a>
+                                <a href="mailto:{{ app.session.get("setting").email }}">{{ app.session.get("setting").email }}</a>
                             </li>
                             <li>
                                 <i class="ti-mobile"></i>

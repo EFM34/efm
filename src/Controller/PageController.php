@@ -17,7 +17,10 @@ final class PageController extends AbstractController
 
         // Si non 
         if(!$page){
-            //  Redirect to error pages dedier 
+            // Si on retrouve pas la page on returne une page d'erreur  404 que aon a créer 
+            return $this->render('page/not-found.html.twig', [
+                'controller_name' => 'PageController'
+            ]);
         }
         return $this->render('page/index.html.twig', [
             'controller_name' => 'PageController',
@@ -25,4 +28,5 @@ final class PageController extends AbstractController
             'page'  =>  $page
         ]);
     }
+
 }

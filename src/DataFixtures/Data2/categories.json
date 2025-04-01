@@ -1,0 +1,26 @@
+[
+    {
+        "name": "Robes",
+        "isMega": true
+    },
+    {
+        "name": "Jupes",
+        "isMega": true
+    },
+    {
+        "name": "Culote",
+        "isMega": true
+    },
+    {
+        "name": "Pantalons femmes",
+        "isMega": false
+    },
+    {
+        "name": "chemises femmes",
+        "isMega": false
+    },
+    {
+        "name": "Pantalons",
+        "isMega": true
+    }
+]
