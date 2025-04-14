@@ -43,8 +43,10 @@ On doit les créer  la Category apre l'user (en 3eme Position)
   - stock             integer   null yes
   - solde_price       integer   null yes  (ici lui a mis no moi je mise yes )
   - regular_price     integer   null no 
+  
   - categories        relation  Entity Category   ManyToMany
-  - relatedProducts   boolean   null no   (reste a rajouter)
+  - relatedProducts   relation  Entity Product    ManyToOne null yes 
+
   - reviews  (avis leser sur un produit)  commentaire  string    null no 
   - brand   (Marque)  string    null yes
   - imageUrls         array     null no 
@@ -279,6 +281,52 @@ Mentions légales
 
 90 Lien ver les page du site 
 On prarametre les page dans le HomeController pour afficher les pages
+
+
+
+Entity 
+php bin/console make:entity Review
+
+On doit les créer  la Review apre Page (en 8eme Position)
+
+- author     string  255   null no
+- content    text          null no
+- rating     integer       null no 
+- created_at   datetime_immutable    null no 
+- updated_at   datetime_immutable    null yes 
+( - product    relation   ManyToOne   avec   reviews )
+
+
+
+MISE EN PLACE DU PANIER CIENT
+
+
+1) MISE EN PLACE DE LA PAGE CART
+CartController
+php bin/console make:controller Cart
+
+2) MISE EN PLACE DE LA PAGE COMPARE
+CompareController
+php bin/console make:controller Compare
+
+
+3) MISE EN PLACE DE LA PAGE WISHLIST
+WishlistController
+php bin/console make:controller Wishlist
+
+
+4) MISE EN PLACE DE LA PAGE CHECKOUT
+CheckoutController
+php bin/console make:controller Checkout
+
+
+
+
+
+
+
+
+
 
 
 

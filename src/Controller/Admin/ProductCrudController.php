@@ -52,10 +52,13 @@ class ProductCrudController extends AbstractCrudController
             TextField::new('name'),
             // https://symfony.com/bundles/EasyAdminBundle/current/crud.html#crud-pages
             // https://symfony.com/bundles/EasyAdminBundle/current/fields/SlugField.html#basic-information
-            SlugField::new('slug')->setTargetFieldName('name'),
-            TextField::new('description'),
-            TextEditorField::new('more_description'),
-            TextEditorField::new('additional_infos'),
+            SlugField::new('slug')->setTargetFieldName('name')->hideOnIndex(),
+            TextField::new('description')->hideOnIndex(),
+            TextEditorField::new('more_description')->hideOnIndex(),
+            TextEditorField::new('additional_infos')->hideOnIndex(),
+            // TextEditorField::new('review')->hideOnIndex(),
+            AssociationField::new('relatedProducts')->hideOnIndex(),
+            
             ImageField::new('imageUrls')
             // On accepte plusieur format d'image ici lister
             ->setFormTypeOptions([ 

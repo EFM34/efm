@@ -44,8 +44,9 @@
                             <li>
                                 <i class="ti-mobile"></i>
                                     <span>+
-                                    {{ app.session.get("setting").phone }}
-                                    </span></li>
+                                        {{ app.session.get("setting").phone }}
+                                    </span>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -263,166 +264,35 @@
                         <div class="search_overlay"></div>
                         <div class="search_overlay"></div>
                     </li>
-                    <li  class="dropdown cart_dropdown">
+                    {# Panier Header Cadi #}
+                    <li class="dropdown cart_dropdown">
                         <a href="#" data-bs-toggle="dropdown" class="nav-link cart_trigger">
                             <i class="linearicons-cart"></i>
-                            <span class="cart_count">3</span>
+                            <span class="cart_count"></span>
                         </a>
                         <div class="cart_box dropdown-menu dropdown-menu-right">
-                            <ul  class="cart_list">
-                                <li>
-                                    <a href="#" class="item_remove">
-                                        <i class="ion-close"></i>
-                                    </a>
-                                    <a href="#">
-                                        <img width="50" height="50" alt="cart_thumb1"
-                                            src="/assets/files/culottes/culotte_5/36851533762117856286455670026456984987161761684087224828.webp">
-                                            Culotte en dentelle
-                                    </a>
-                                    <span class="cart_quantity"> 11 x
-                                        <span class="cart_amount">
-                                            <span class="price_symbole">
-                                                23,91&nbsp;€
-                                            </span>
-                                        </span>
-                                    </span>
-                                </li>
-                                <li>
-                                    <a href="#" class="item_remove">
-                                        <i class="ion-close"></i>
-                                    </a>
-                                    <a href="#">
-                                         <img width="50" height="50" alt="cart_thumb1"
-                                            src="/assets/files/culottes/culotte_9/116945623386141314594418897879593148825527931684087225230.webp">
-                                            Culotte unicolore (sans couture)
-                                    </a>
-                                    <span class="cart_quantity"> 4 x 
-                                        <span class="cart_amount">
-                                            <span class="price_symbole">
-                                                44,54&nbsp;€
-                                            </span>
-                                        </span>
-                                    </span>
-                                </li>
-                                <li>
-                                    <a href="#" class="item_remove">
-                                        <i class="ion-close"></i>
-                                    </a>
-                                    <a href="#">
-                                        <img width="50" height="50" alt="cart_thumb1"
-                                            src="/assets/files/culottes/culotte_7/825380258783085919054835307976332473139779511684087224936.webp">
-                                            Culotte en dentelle
-                                    </a>
-                                        <span class="cart_quantity"> 3 x
-                                            <span class="cart_amount">
-                                                <span class="price_symbole">
-                                                    17,17&nbsp;€
-                                                </span>
-                                            </span>
-                                        </span>
-                                </li>
-                                <li>
-                                    <a href="#"
-                                        class="item_remove">
-                                        <i class="ion-close"></i>
-                                    </a>
-                                    <a href="#">
-                                        <img width="50" height="50" alt="cart_thumb1"
-                                            src="/assets/files/970670668041335927385290724653240714148366921684565574162.webp">
-                                            Bikini unicolore côtelé
-                                    </a>
-                                        <span  class="cart_quantity"> 4 x 
-                                            <span class="cart_amount">
-                                                <span class="price_symbole">
-                                                    28,24&nbsp;€
-                                                </span>
-                                            </span>
-                                        </span>
-                                </li>
-                                <li>
-                                    <a href="#" class="item_remove">
-                                        <i class="ion-close"></i>
-                                    </a>
-                                    <a href="#">
-                                        <img width="50" height="50" alt="cart_thumb1"
-                                            src="/assets/files/culottes/culotte_4/87087411019387380483560199609827534551691041684087224752.webp">
-                                            Culotte unicolore femme (sans couture)
-                                    </a>
-                                    <span class="cart_quantity"> 2 x 
-                                        <span class="cart_amount">
-                                            <span class="price_symbole">
-                                                56,07&nbsp;€
-                                            </span>
-                                        </span>
-                                    </span>
-                                    </li>
-                                <li>
-                                    <a href="#" class="item_remove">
-                                        <i class="ion-close"></i>
-                                    </a>
-                                    <a href="#">
-                                        <img width="50" height="50" alt="cart_thumb1"
-                                            src="/assets/files/culottes/culotte_2/64690629656996101166169787112869964617448491684087224479.webp">
-                                            Tanga unicolore
-                                    </a>
-                                        <span  class="cart_quantity"> 3 x 
-                                            <span class="cart_amount">
-                                                <span class="price_symbole">
-                                                38,84&nbsp;€
-                                                </span>
-                                            </span>
-                                        </span>
-                                </li>
-                                <li>
-                                    <a href="#" class="item_remove">
-                                        <i class="ion-close"></i>
-                                    </a>
-                                    <a href="#">
-                                         <img width="50" height="50" alt="cart_thumb1"
-                                            src="/assets/files/culottes/culotte_8/10518988473111520886581236853833613928085898971684087225041.webp">
-                                            Culotte en dentelle
-                                    </a>
-                                        <span class="cart_quantity"> 1 x
-                                            <span  class="cart_amount">
-                                                <span  class="price_symbole">
-                                                    58,43&nbsp;€
-                                                </span>
-                                            </span>
-                                        </span>
-                                </li>
-                                <li>
-                                    <a href="#" class="item_remove">
-                                        <i class="ion-close"></i>
-                                    </a>
-                                    <a href="#">
-                                         <img  width="50" height="50" alt="cart_thumb1"
-                                            src="/assets/files/culottes/culotte_3/6138170893214881132536005127536132168491807951684087224669.webp">
-                                            Culotte à blocs de couleurs en dentelle
-                                    </a>
-                                        <span class="cart_quantity"> 3 x 
-                                            <span class="cart_amount">
-                                                <span class="price_symbole">
-                                                    54,95&nbsp;€
-                                                </span>
-                                            </span>
-                                        </span>
-                                </li>
+                            <ul class="cart_list">
                             </ul>
-                            <div  class="cart_footer">
-                                <p  class="cart_total">
+
+                            <div class="cart_footer">
+                                <p class="cart_total">
                                     <strong>Subtotal:</strong>
                                         <span class="cart_price">
                                             <span class="price_symbole"></span>
                                         </span>
-                                        1 057,58&nbsp;€ 
+                                        <span class="cart_price_value">
+                                        {# Affiche le pris total du panier updatHaederCart #}
+                                        </span>
                                 </p>
-                                <p  class="cart_buttons">
+
+                                <p class="cart_buttons">
                                     <a class="btn btn-fill-line view-cart" href="/cart">View Cart</a>
                                     <a class="btn btn-fill-out checkout" href="/checkout">Checkout</a>
                                 </p>
                             </div>
                         </div>
                     </li>
+                     {# Fin Panier Header Cadi #}
                 </ul>
             </nav>
         </div>

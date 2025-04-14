@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}E.F.M | Produit Wish List!{% endblock %}
+
+{% block body %}
+
+{% include "page_head/page_head.html.twig" with {'page_name': "Wish List"} %}
+
+<div class="main_content wishlist_content" data-wishlist="{{wishlist_json}}">
+    <div class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="table-responsive wishlist_table">
+                        <table class="table">
+                            <thead >
+                                <tr>
+                                    <th  class="product-thumbnail">&nbsp;</th>
+                                    <th  class="product-name">Produit</th>
+                                    <th  class="product-price">Prix</th>
+                                    <th  class="product-stock-status">État des stocks</th>
+                                    <th  class="product-add-to-cart"></th>
+                                    <th  class="product-remove">Retirer</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                           
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

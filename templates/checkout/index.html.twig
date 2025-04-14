@@ -1,0 +1,343 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}E.F.M | Page de Paiement !{% endblock %}
+
+{% block body %}
+
+<div class="main_content">
+    <div class="section">
+        <div class="container">
+           {# Premier Row #}
+            <div class="row">
+                {# Compte client #}
+                <div class="col-lg-6">
+                    <div class="toggle_info">
+                        <span>
+                            <i class="fas fa-user"></i>
+                                Client déjà enregistré ?
+                            <a href="#loginform" data-bs-toggle="collapse" aria-expanded="false" class="collapsed">
+                                Cliquez ici pour vous connecter
+                            </a>
+                        </span>
+                    </div>
+                    <div id="loginform" class="panel-collapse collapse login_form">
+                        <div class="panel-body">
+                            <p>Si vous avez déjà effectué des achats chez nous, 
+                                veuillez saisir vos informations ci-dessous. Si vous êtes un nouveau client, 
+                                veuillez accéder à la section Facturation et livraison.
+                            </p>
+                            <form novalidate="" method="post"
+                                class="ng-untouched ng-pristine ng-valid">
+                                <div class="form-group mb-3">
+                                    <input type="text" required="" name="email" placeholder="Username Or Email" class="form-control">
+                                </div>
+                                <div class="form-group mb-3">
+                                    <input required="" type="password" name="password" placeholder="Password" class="form-control">
+                                </div>
+                                <div class="login_footer form-group mb-3">
+                                    <div class="chek-form">
+                                        <div class="custome-checkbox">
+                                            <input type="checkbox" name="checkbox" id="remember" value="" class="form-check-input">
+                                            <label for="remember" class="form-check-label">
+                                                <span>Souviens-toi de moi</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <button type="submit" name="login" class="btn btn-fill-out btn-block">Se connecter</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                {# Code Coupon #}
+                <div class="col-lg-6">
+                    <div class="toggle_info">
+                        <span>
+                            <i class="fas fa-tag"></i>
+                               Vous avez un coupon ?
+                            <a href="#coupon" data-bs-toggle="collapse" aria-expanded="false" class="collapsed">
+                                Cliquez ici pour entrer votre code
+                            </a>
+                        </span>
+                    </div>
+                    <div id="coupon" class="panel-collapse collapse coupon_form">
+                        <div class="panel-body">
+                            <p>Si vous avez un code promo, veuillez l'appliquer ci-dessous.</p>
+                            <div class="coupon field_form input-group">
+                                <input type="text" value="" placeholder="Enter Coupon Code.." class="form-control">
+                                <div class="input-group-append">
+                                    <button type="submit" class="btn btn-fill-out btn-sm">Appliquer le coupon</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {# Fin Premier Row #}
+
+            {# Second Row #}
+            <div class="row">
+                <div class="col-12">
+                    <div class="medium_divider"></div>
+                    <div class="divider center_icon">
+                        <i class="linearicons-credit-card"></i>
+                    </div>
+                    <div class="medium_divider"></div>
+                </div>
+            </div>
+            {# Fin Second Row #}
+
+            {# Trosieme Row #}
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="heading_s1">
+                        <h4>Détails de facturation</h4>
+                    </div>
+                    <form novalidate="" method="post"
+                        class="ng-untouched ng-pristine ng-valid">
+                        <div class="form-group mb-3">
+                            <input type="text" required="" name="fname" placeholder="First name *" class="form-control">
+                        </div>
+                        <div class="form-group mb-3">
+                            <input  type="text" required="" name="lname" placeholder="Last name *" class="form-control">
+                        </div>
+                        <div class="form-group mb-3">
+                            <input required="" type="text" name="cname" placeholder="Company Name" class="form-control">
+                        </div>
+                        <div class="form-group mb-3">
+                            <div class="custom_select">
+                                <select class="form-control">
+                                    <option value="" ng-reflect-value="">Sélectionnez une option...</option>
+                                    <option value="AX" ng-reflect-value="AX">Aland Islands</option>
+                                    <option value="AF" ng-reflect-value="AF">Afghanistan</option>
+                                    <option value="AL" ng-reflect-value="AL">Albania</option>
+                                    <option value="DZ" ng-reflect-value="DZ">Algeria</option>
+                                    <option value="AD" ng-reflect-value="AD">Andorra</option>                                
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group mb-3">
+                            <input type="text" name="billing_address" required="" placeholder="Address *" class="form-control">
+                        </div>
+                        <div class="form-group mb-3">
+                            <input type="text" name="billing_address2" required="" placeholder="Address line2" class="form-control">
+                        </div>
+                        <div class="form-group mb-3">
+                            <input required="" type="text" name="city" placeholder="City / Town *" class="form-control">
+                        </div>
+                        <div class="form-group mb-3">
+                            <input required="" type="text" name="state" placeholder="State / County *" class="form-control">
+                        </div>
+                        <div class="form-group mb-3">
+                            <input required="" type="text" name="zipcode" placeholder="Postcode / ZIP *" class="form-control">
+                        </div>
+                        <div class="form-group mb-3">
+                            <input required="" type="text" name="phone" placeholder="Phone *" class="form-control">
+                        </div>
+                        <div class="form-group mb-3">
+                            <input required="" type="text" name="email" placeholder="Email address *" class="form-control">
+                        </div>
+                        <div class="form-group mb-3">
+                            <div class="chek-form">
+                                <div class="custome-checkbox">
+                                    <input type="checkbox" name="checkbox" id="createaccount" class="form-check-input">
+                                    <label for="createaccount" class="form-check-label label_info">
+                                        <span>Créer un compte?</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group create-account mb-3">
+                            <input required="" type="password" placeholder="Password" name="password" class="form-control"></div>
+                        <div class="ship_detail">
+                            <div class="form-group mb-3">
+                                <div class="chek-form">
+                                    <div class="custome-checkbox">
+                                        <input type="checkbox" name="checkbox" id="differentaddress" class="form-check-input">
+                                        <label for="differentaddress" class="form-check-label label_info">
+                                            <span>Expédier à une adresse différente ?</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="different_address">
+                                <div class="form-group mb-3">
+                                    <input type="text" required="" name="fname" placeholder="First name *" class="form-control">
+                                </div>
+                                <div class="form-group mb-3">
+                                    <input type="text" required="" name="lname" placeholder="Last name *" class="form-control">
+                                </div>
+                                <div class="form-group mb-3">
+                                    <input required="" type="text" name="cname" placeholder="Company Name" class="form-control">
+                                </div>
+                                <div class="form-group mb-3">
+                                    <div class="custom_select">
+                                        <select class="form-control">
+                                            <option value="" ng-reflect-value="">Select an option...</option>
+                                            <option value="AX" ng-reflect-value="AX">Aland Islands</option>
+                                            <option value="AF" ng-reflect-value="AF">Afghanistan</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <input type="text" name="billing_address" required="" placeholder="Address *" class="form-control">
+                                </div>
+                                <div class="form-group mb-3">
+                                    <input type="text" name="billing_address2" required="" placeholder="Address line2" class="form-control">
+                                </div>
+                                <div class="form-group mb-3">
+                                    <input required="" type="text" name="city" placeholder="City / Town *" class="form-control">
+                                </div>
+                                <div class="form-group mb-3">
+                                    <input required="" type="text" name="state" placeholder="State / County *" class="form-control">
+                                </div>
+                                <div class="form-group mb-3">
+                                    <input required="" type="text" name="zipcode" placeholder="Postcode / ZIP *" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="heading_s1">
+                            <h4>Informations Complémentaires</h4>
+                        </div>
+                        <div class="form-group mb-0">
+                            <textarea rows="5" placeholder="Order notes" class="form-control"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-6">
+                    <div class="order_review">
+                        <div class="heading_s1">
+                            <h4>Vos commandes</h4>
+                        </div>
+                        <div class="table-responsive order_table">
+                            <table class="table">
+                                <thea>
+                                    <tr>
+                                        <th>Produit</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody >
+                                    <tr>
+                                        <td>Culotte en dentelle 
+                                            <span class="product-qty">x 11</span>
+                                        </td>
+                                        <td>23,91&nbsp;€</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Culotte unicolore (sans couture)
+                                            <span class="product-qty">x 4</span>
+                                    </td>
+                                        <td>44,54&nbsp;€</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Culotte en dentelle
+                                            <span class="product-qty">x 3</span>
+                                        </td>
+                                        <td>17,17&nbsp;€</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Bikini unicolore côtelé
+                                            <span class="product-qty">x 4</span>
+                                        </td>
+                                        <td>28,24&nbsp;€</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Culotte unicolore femme (sans couture)
+                                            <span class="product-qty">x 2</span>
+                                        </td>
+                                        <td>56,07&nbsp;€</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Tanga unicolore 
+                                            <span class="product-qty">x 3</span>
+                                        </td>
+                                        <td>38,84&nbsp;€</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Culotte en dentelle 
+                                            <span class="product-qty">x 1</span>
+                                        </td>
+                                        <td>58,43&nbsp;€</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Culotte à blocs de couleurs en dentelle
+                                            <span class="product-qty">x 3</span>
+                                        </td>
+                                        <td>54,95&nbsp;€</td>
+                                    </tr>
+
+                                </tbody>
+
+                                <tfoot >
+                                    <tr>
+                                        <th>SubTotal</th>
+                                        <td class="product-subtotal">1 057,58&nbsp;€</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Expédition</th>
+                                        <td>Livraison gratuite</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Total</th>
+                                        <td class="product-subtotal">1 057,58&nbsp;€</td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                        <div class="payment_method">
+                            <div class="heading_s1">
+                                <h4>Paiement</h4>
+                            </div>
+                            <div class="payment_option">
+                                <div class="custome-radio">
+                                    <input required="" type="radio" name="payment_option" checked="" class="form-check-input" id="directBankTransfer" value="directBankTransfer">
+                                    <label class="form-check-label" for="directBankTransfer">Virement Bancaire Direct</label>
+                                    
+                                      <p class="payment-text">Veuillez envoyer votre chèque à 
+                                        Nom du magasin, rue du magasin, ville du magasin, 
+                                        État/Comté du magasin, code postal du magasin.
+                                    </p>
+                                </div>
+                                <div class="custome-radio">
+                                    <input required="" type="radio" name="payment_option" checked="" class="form-check-input" id="checkPayment" value="checkPayment">
+                                    <label class="form-check-label" for="checkPayment">Paiement par chèque</label>
+                                    
+                                    <p class="payment-text">Veuillez envoyer votre chèque à 
+                                        Nom du magasin, rue du magasin, ville du magasin, 
+                                        État/Comté du magasin, code postal du magasin.
+                                    </p>
+                                </div>
+                                <div class="custome-radio">
+                                    <input required="" type="radio" name="payment_option" checked="" class="form-check-input" id="paypal" value="paypal">
+                                    <label class="form-check-label" for="paypal">Paypal</label>
+                                        
+                                    <p class="payment-text">Payer via PayPal ; vous pouvez 
+                                        payer avec votre carte de crédit si vous n'avez pas de compte PayPal.</p>
+                                </div>
+                                <div class="custome-radio">
+                                    <input required="" type="radio" name="payment_option" checked="" class="form-check-input" id="creditCard" value="creditCard">
+                                    <label class="form-check-label" for="creditCard">Carte de crédit</label>
+                                    
+                                    <p class="payment-text">Veuillez envoyer votre chèque à 
+                                        Nom du magasin, rue du magasin, ville du magasin, 
+                                        État/Comté du magasin, code postal du magasin.
+                                    </p>
+                                </div>
+
+                            </div>
+                        </div>
+                        <a href="#" class="btn btn-fill-out btn-block">Payer maintenant (1 057,58&nbsp;€)</a>
+                    </div>
+                </div>
+            </div>
+           {# Fin Trosieme Row #}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

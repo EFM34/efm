@@ -77,11 +77,27 @@ class Product
     #[ORM\Column]
     private ?\DateTimeImmutable $created_at = null;
 
+    #[ORM\ManyToOne(targetEntity: self::class)]
+    private ?self $relatedProducts = null;
+
+    #[ORM\Column(type: Types::TEXT)]
+    private ?string $review = null;
+
+    // /**
+    //  * @var Collection<int, Review>
+    //  */
+    // #[ORM\OneToMany(targetEntity: Review::class, mappedBy: 'product')]
+    // private Collection $reviews;
+
+
+    // #[ORM\OneToMany(mappedBy: "product", targetEntity: Review::class, cascade: ["persist", "remove"])]
+    // private Collection $reviews;
 
     public function __construct()
     {
         $this->categories = new ArrayCollection();
         $this->setCreatedAt(new \DateTimeImmutable());
+        // $this->reviews = new ArrayCollection();
     }
 
 
@@ -323,5 +339,59 @@ class Product
     public function __toString()
     {
         return $this->name;
+    }
+
+    // /**
+    //  * @return Collection<int, Review>
+    //  */
+    // public function getReviews(): Collection
+    // {
+    //     return $this->reviews;
+    // }
+
+    // public function addReview(Review $review): static
+    // {
+    //     if (!$this->reviews->contains($review)) {
+    //         $this->reviews->add($review);
+    //         $review->setProduct($this);
+    //     }
+
+    //     return $this;
+    // }
+
+    // public function removeReview(Review $review): static
+    // {
+    //     if ($this->reviews->removeElement($review)) {
+    //         // set the owning side to null (unless already changed)
+    //         if ($review->getProduct() === $this) {
+    //             $review->setProduct(null);
+    //         }
+    //     }
+
+    //     return $this;
+    // }
+
+    public function getRelatedProducts(): ?self
+    {
+        return $this->relatedProducts;
+    }
+
+    public function setRelatedProducts(?self $relatedProducts): static
+    {
+        $this->relatedProducts = $relatedProducts;
+
+        return $this;
+    }
+
+    public function getReview(): ?string
+    {
+        return $this->review;
+    }
+
+    public function setReview(string $review): static
+    {
+        $this->review = $review;
+
+        return $this;
     }
 }

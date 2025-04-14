@@ -1,0 +1,63 @@
+{# templates/product/show.html.twig #}
+
+<h2>{{ product.name }}</h2>
+<p>{{ product.description }}</p>
+
+<!-- Afficher les Commentaires -->
+<div id="Reviews" role="tabpanel" aria-labelledby="Reviews-tab" class="tab-pane fade">
+    <div class="comments">
+        <h5 class="product_tab_title">{{ reviews|length }} Avis pour <span>{{ product.name }}</span></h5>
+        <ul class="list_none comment_list mt-4">
+            {% for review in reviews %}
+                <li>
+                    <div class="comment_block">
+                        <div class="rating_wrap">
+                            <div class="rating">
+                                <div class="product_rate" style="width: {{ review.rating * 20 }}%;"></div>
+                            </div>
+                        </div>
+                        <p class="customer_meta">
+                            <span class="review_author">{{ review.author.username }}</span>
+                            <span class="comment-date">{{ review.createdAt|date('d/m/Y') }}</span>
+                        </p>
+                        <div class="description">
+                            <p>{{ review.comment }}</p>
+                        </div>
+                    </div>
+                </li>
+            {% else %}
+                <p>Aucun commentaire pour le moment.</p>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <!-- Afficher le formulaire SEULEMENT si l'utilisateur est connecté -->
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        <div class="review_form field_form">
+            <h5>Ajouter un avis</h5>
+            <form action="{{ path('product_review', {'id': product.id}) }}" method="post">
+                <div class="form-group col-12 mb-3">
+                    <label for="rating">Note :</label>
+                    <select name="rating" required class="form-control">
+                        <option value="5">5 - Excellent</option>
+                        <option value="4">4 - Très bien</option>
+                        <option value="3">3 - Moyen</option>
+                        <option value="2">2 - Mauvais</option>
+                        <option value="1">1 - Très mauvais</option>
+                    </select>
+                </div>
+                <div class="form-group col-12 mb-3">
+                    <textarea required name="comment" placeholder="Votre avis *" rows="4" class="form-control"></textarea>
+                </div>
+                <div class="form-group col-12 mb-3">
+                    <button type="submit" class="btn btn-fill-out">Soumettre</button>
+                </div>
+            </form>
+        </div>
+    {% else %}
+        <p><a href="{{ path('app_login') }}">Connectez-vous</a> pour laisser un avis.</p>
+    {% endif %}
+</div>
+
+
+
