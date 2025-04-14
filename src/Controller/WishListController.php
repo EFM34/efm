@@ -10,7 +10,8 @@ use Symfony\Component\Routing\Attribute\Route;
 final class WishListController extends AbstractController
 {
     
-    public function __construct(private WishListService $wishlistService)
+    public function __construct(
+        private WishListService $wishlistService)
     {
         $this->wishlistService = $wishlistService;
     }
@@ -19,11 +20,13 @@ final class WishListController extends AbstractController
     #[Route('/wishlist', name: 'app_wishlist')]
     public function index(): Response
     {
-        // On récupére les détails 
+        // On récupére les détails de la WishList
         $wishlist = $this->wishlistService->getWishListDetails();
 
         
-        // On encode et on stocke en json ici et on le passe la view
+        // On  stocke dans la variable
+        // Et on passe a notre template wishlist/index.html.twig dans la data-wishlist
+        // <div class="main_content wishlist_content" data-wishlist="{{wishlist_json}}">
         $wishlist_json = json_encode($wishlist);
 
         return $this->render('wishlist/index.html.twig', [
@@ -42,6 +45,7 @@ final class WishListController extends AbstractController
         // On récupére les détails 
         $wishlist = $this->wishlistService->getWishListDetails();
         
+        // Redirection en PHP vers la page WishList
         // return $this->redirectToRoute('app_wishlist');
 
         // On return du json 
@@ -54,13 +58,13 @@ final class WishListController extends AbstractController
     {
         // On supprime le produit du wishlist
         $this->wishlistService->removeToWishList($productId);
-        //  On récupére les détails
+        //  Et on récupére les détails
         $wishlist = $this->wishlistService->getWishListDetails();
         
-
+        // Redirection en PHP  ers la page WishList
         // return $this->redirectToRoute('app_wishlist');
 
-        // On return du json 
+        // On returne en JS / On return du json 
         return $this->json($wishlist);
     }
 
@@ -73,10 +77,10 @@ final class WishListController extends AbstractController
         //  On récupére les détails
         $wishlist = $this->wishlistService->getWishListDetails();
         
-
+        // Redirection en PHP vers la page WishList
         return $this->redirectToRoute('app_wishlist');
 
-        // On return du json 
+        // On returne en JS / On return du json 
         // return $this->json($wishlist);
     }
 }

@@ -42,11 +42,9 @@ final class CartController extends AbstractController
         //  On récupére les détails du panier 
         $cart = $this->cartService->getCartDetails();
         
+
         // On return du json 
         return $this->json($cart);
-
-        // Et on redirige ver le page panier 
-        // return $this->redirectToRoute("app_cart");
     }
 
 
@@ -54,15 +52,17 @@ final class CartController extends AbstractController
     public function removeToCart(string $productId, int $count = 1): Response
     {
         // On supprime le produit du panier
-       $this->cartService->removeToCart($productId, $count);
-         //  On récupére les détails du panier 
-         $cart = $this->cartService->getCartDetails();
+        $this->cartService->removeToCart($productId, $count);
         
-         // On return du json 
-         return $this->json($cart);
+        //  On récupére les détails du panier 
+        $cart = $this->cartService->getCartDetails();
         
-         // Et on redirige ver le page panier 
+        // Et on redirige ver le page panier en PHP
         // return $this->redirectToRoute("app_cart");
+
+        // On return du json 
+        return $this->json($cart);
+        
     }
 
 
@@ -77,4 +77,8 @@ final class CartController extends AbstractController
          // On return du json 
          return $this->json($cart);
     }
+
+    
+        // Et on redirige ver le page panier en PHP 
+        // return $this->redirectToRoute("app_cart");
 }
