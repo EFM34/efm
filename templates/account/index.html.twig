@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Mon Compte{% endblock %}
+{% block title %}E.F.M | Mon Compte{% endblock %}
 
 {% block body %}
 
@@ -35,7 +35,7 @@
             </div>
             <div class="col-lg-9 col-md-8">
                 <div class="tab-content dashboard_content">
-                  	<div class="tab-pane fade active show" id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
+                  	<div class="tab-pane fade" id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
                     	<div class="card">
                         	<div class="card-header">
                                 <h3>Dashboard</h3>
@@ -94,33 +94,122 @@
                             </div>
                         </div>
                   	</div>
-					<div class="tab-pane fade" id="address" role="tabpanel" aria-labelledby="address-tab">
+					<div class="tab-pane fade active show" id="address" role="tabpanel" aria-labelledby="address-tab">
                     	<div class="row">
-                        	<div class="col-lg-6">
-                                <div class="card mb-3 mb-lg-0">
-                                    <div class="card-header">
-                                        <h3>Billing Address</h3>
-                                    </div>
-                                    <div class="card-body">
-                                        <address>House #15<br>Road #1<br>Block #C <br>Angali <br> Vedora <br>1212</address>
-                                        <p>New York</p>
-                                        <a href="#" class="btn btn-fill-out">Edit</a>
-                                    </div>
-                                </div>
+                            <div class="action d-flex mb-2">
+                                <a href="#" id="add_new_address" class="btn btn-fill-out">Ajouter une nouvelle adresse</a>
                             </div>
-                            <div class="col-lg-6">
+
+                            <div class="col-lg-12" id="add_form">
+                                <form action="">
+                                    <div class="row">
+                                        <div class="from-group col-md-12 mb-3">
+                                            <label>Type d'adresse <span class="required">*</span></label>
+                                            <select name="address_type" id="" class="form-control">
+                                                <option value="Facturation">Facturation</option>
+                                                <option value="Expédition">Expédition</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="from-group col-md-12 mb-3">
+                                            <label>Nom <span class="required">*</span></label>
+                                            <input required="" class="form-control" name="name" type="text">
+                                        </div>
+
+                                        <div class="from-group col-md-12 mb-3">
+                                            <label>Nom et prénom <span class="required">*</span></label>
+                                            <input required="" class="form-control" name="client_name" type="text">
+                                        </div>
+
+                                        <div class="from-group col-md-6 mb-3">
+                                            <label>Rue <span class="required">*</span></label>
+                                            <input required="" class="form-control" name="street" type="text">
+                                        </div>
+                                        
+                                        <div class="from-group col-md-6 mb-3">
+                                            <label>Ville <span class="required">*</span></label>
+                                            <input required="" class="form-control" name="city" type="text">
+                                        </div>
+
+                                        <div class="from-group col-md-6 mb-3">
+                                            <label>Code Postal<span class="required">*</span></label>
+                                            <input required="" class="form-control" name="postal_code" type="text">
+                                        </div>
+
+                                        <div class="from-group col-md-6 mb-3">
+                                            <label>Pays <span class="required">*</span></label>
+                                            <select class="form-control" name="state" id="state">
+
+                                            </select>
+                                        </div>
+
+                                        <div class="d-flex">
+                                            <button class="btn btn-fill-out">Sauvegarder</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="col-lg-12 d-block" id="address_details">
                                 <div class="card">
-                                    <div class="card-header">
-                                        <h3>Shipping Address</h3>
-                                    </div>
-                                    <div class="card-body">
-                                        <address>House #15<br>Road #1<br>Block #C <br>Angali <br> Vedora <br>1212</address>
-                                        <p>New York</p>
-                                        <a href="#" class="btn btn-fill-out">Edit</a>
-                                    </div>
+                        	<div class="card-header">
+                                <h3>Adresses</h3>
+                            </div>
+                            <div class="card-body">
+                    			<div class="table-responsive address_content">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>#Id</th>
+                                                <th>Adresse</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                             {% for address in addresses %} 
+                                            <tr>
+                                                <td>{{address.id}}</td>
+                                                <td>{{address.street}} 
+                                                    {{address.postalCode}} 
+                                                    {{address.city}} 
+                                                    {{address.state}}
+                                                </td>
+                                                <td>
+                                                    <a href="#" 
+                                                        data-id="{{address.id}}" 
+                                                        data-address_type="{{address.addressType}}"
+                                                        data-client_name="{{address.clientName}}"
+                                                        data-name="{{address.name}}" 
+                                                        data-street="{{address.street}}" 
+                                                        data-city="{{address.city}}"
+                                                        data-postal_code="{{address.postalCode}}" 
+                                                        data-state="{{address.state}}"  
+                                                        class="btn btn-fill-out btn-sm edit_address">
+                                                        Modifier
+                                                    </a>
+                                                </td>
+                                                <td><a href="#" data-id="{{address.id}}" class="btn btn-fill-out btn-sm remove_address">Supprimer</a></td>
+                                                
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
+                    </div>
+                        {# <div class="col-lg-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3>Shipping Address</h3>
+                                </div>
+                                <div class="card-body">
+                                    <address>House #15<br>Road #1<br>Block #C <br>Angali <br> Vedora <br>1212</address>
+                                    <p>New York</p>
+                                    <a href="#" class="btn btn-fill-out">Edit</a>
+                                </div>
+                            </div>
+                        </div> #}
+                    </div>
 					</div>
                     <div class="tab-pane fade" id="account-detail" role="tabpanel" aria-labelledby="account-detail-tab">
 						<div class="card">
@@ -178,4 +267,229 @@
 
 </div>
 {# <!-- END MAIN CONTENT --> #}
+{% endblock %}
+
+
+{% block javascripts %}
+<script>
+    const addform = document.getElementById("add_form") 
+    const form = document.querySelector("#add_form form") 
+
+    const addAddressButton = document.getElementById("add_new_address")
+    const addressDetails = document.getElementById("address_details") 
+    const editAddress = document.querySelectorAll(".edit_address") 
+    let isUpdating = false
+    let currentAddress
+
+    const displayAddress =  (addresses) =>{
+        let isUpdating = false
+        currentAddress = undefined
+        const tbody = document.querySelector(".address_content tbody")
+        if(tbody){
+            // On met une chaîne vide
+            tbody.innerHTML = ""
+            // On boucle sur les addresses
+            addresses.forEach(address => {
+                // On injecte notre tr et on concatene pour pas ecraser ce que il ya
+                tbody.innerHTML += `
+                    <tr>
+                        <td>#${address.id}</td>
+                        <td>${address.street} 
+                            ${address.postalode} 
+                            ${address.city}
+                            ${address.state}
+                        </td>
+                        <td>
+                            <a href="#" 
+                                data-id="${address.id}" 
+                                data-address_type="${address.address_type}"
+                                data-client_name="${address.clientName}"
+                                data-name="${address.name}" 
+                                data-street="${address.street}" 
+                                data-city="${address.city}"
+                                data-postal_code="${address.postalCode}" 
+                                data-state="${address.state}" 
+                                class="btn btn-fill-out btn-sm edit_address">
+                                Modifier
+                            </a>
+                        </td>
+                        <td><a href="#" data-id="${address.id}" class="btn btn-fill-out btn-sm remove_address">Supprimer</a></td>
+                    </tr>
+                    ` 
+            });
+            // De que on sorte de forEach on fait ajouter d-none pour cacher le formulaire
+            addform.classList.add("d-none")
+            // On supprime avec le d-none pour que le formulaire soi visible
+            addressDetails.classList.remove("d-none")
+            // A chaque foit que on met a jour les evenment on initialise les addEvent()
+            addEvent()
+        }
+    }
+
+    const initState = async () =>{
+        const select = document.querySelector("#add_form form select#state") 
+        select.innerHTML = ""
+        // On lie le fichier que on a dans notre dossier public
+        const response = await fetch("/assets/data/countries.json")
+        // On recupere les pays
+        const countries = await response.json()
+
+        countries.forEach((countrie)=>{
+            select.innerHTML += `
+                <option value="${countrie.alpha2Code}"> ${countrie.name} </option>
+            `
+        })
+    }
+
+    const addEvent = (address) =>{
+        const addform = document.getElementById("add_form") 
+        const addAddressButton = document.getElementById("add_new_address"); 
+        const addressDetails = document.getElementById("address_details") 
+        const remove_address_btns = document.querySelectorAll(".remove_address")
+        const editAddress = document.querySelectorAll(".edit_address") 
+
+        // On boucle sur toute les adresses pour le bouton de la suppression 
+        remove_address_btns.forEach((remove_address_btn)=> {  
+            // On vas faire une requete de suppression 
+            remove_address_btn.addEventListener("click", async (event)=>{
+                // Pour éviter d' avoir l'effet de bord de revenir ver le haut de la page
+                event.preventDefault()
+                const element = event.target
+                // On récupère l'identifiant de l'élément
+                const id = element.dataset.id 
+                if(id) {
+                    // On déclenche l'action vers le serveur pour dire qu'on veut supprimer cet élément
+                    // On va faire la requête ici
+                    const response = await fetch("/api/address/"+id, {
+                        method: "DELETE"
+                    })
+                
+                    const result = await response.json();
+                    console.log(result);
+                    
+    
+                    if(result.isSuccess){
+                        const addresses = result.data
+                        // On affiche le formulaire si tout est ok 
+                        displayAddress(addresses)
+                    }
+    
+                }
+            })
+        });
+
+        // De que on a submit cela veu dire que le form a etait summit avec la requette asyncron
+        addform.addEventListener("submit", async (event)=>{
+            // On arret tous 
+            event.preventDefault()
+            console.log("******************** SUBMIT **************");
+
+            // On récupere le formulaire
+            const form = document.querySelector("#add_form form")
+            // On récupere formulaire et on le mat ici dans le 
+            // (let = formData) et (instance = FormData) a pas confondre
+            const formData = new FormData(form)
+
+            // On regarde si il se agie d'une mise a jour
+            if(isUpdating){
+                // update
+                // On extrait les données en format JSON 
+                let object = {};
+                formData.forEach((value, key) => object[key] = value);
+                let json = JSON.stringify(object);
+
+
+                // On va faire la requette ici
+                const response = await fetch("/api/address/"+currentAddress.id, {
+                    method: "PUT", 
+                    body: json
+                })
+            
+                const result = await response.json();
+
+                if(result.isSuccess){
+                    const addresses = result.data
+                    // On affiche le formulaire si tous est ok 
+                    displayAddress(addresses)
+                }
+            }else{
+                // create data
+
+                // On va faire la requette ici
+                const response = await fetch("/api/address", {
+                    method: "POST", 
+                    body: formData
+                })
+            
+                const result = await response.json();
+
+                if(result.isSuccess){
+                    const addresses = result.data
+                    // On affiche le formulaire si tous est ok 
+                    displayAddress(addresses)
+                }
+            }
+
+            
+        })
+
+        editAddress.forEach(item =>item.addEventListener("click", updateAddress)) 
+    }
+
+
+    const updateAddress = (event)=>{
+        event.preventDefault()
+        isUpdating = true
+        currentAddress = Object.assign({},event.target.dataset)
+        addAddressButton.click()
+
+        document.getElementsByName("name")[0].value = currentAddress.name
+        document.getElementsByName("client_name")[0].value = currentAddress.client_name
+        document.getElementsByName("address_type")[0].value = currentAddress.address_type
+        document.getElementsByName("street")[0].value = currentAddress.street
+        document.getElementsByName("city")[0].value = currentAddress.city
+        document.getElementsByName("postal_code")[0].value = currentAddress.postal_code
+        document.getElementsByName("state")[0].value = currentAddress.state
+        // Button de modification de formulaire apre avoir change les infos de formulaire
+        form.querySelector("button").innerHTML = "Mise à jour"
+        
+        
+        
+        console.log(currentAddress);
+        
+    }
+    // Lors que on detecte un click sur ce button 
+    //  On ecoute le boutton 
+    addAddressButton.addEventListener("click", (event)=>{
+        event.preventDefault()
+        // on verifie esque ça contien d-none
+        if(addform.classList.contains("d-none")) {
+            // Si le form et cacher on retire avec le remouve le d-none
+            addform.classList.remove("d-none")
+            // On a que ajoute en suite le d-none
+            addressDetails.classList.add("d-none")
+            // On change le contenu de boutton Annuler
+            addAddressButton.innerHTML = "Annuler"
+            
+            // Button de modification de formulaire apre avoir change les infos de formulaire
+            form.querySelector("button").innerHTML = "Ajouter une nouvelle adresse"
+            // On reinitialise les données du formulaire
+            form.reset()
+        } else { 
+            //Si le form ne pas d-none cela veut dire que le formulaire est deja afficher
+            // On change le contenu de boutton Ajouter un nouveau
+            addAddressButton.innerHTML = "Ajouter une nouvelle adresse"
+            // On a que ajoute en suite le d-none
+            addform.classList.add("d-none")
+            // Si le form et cacher on retire ave le remouve le d-none
+            addressDetails.classList.remove("d-none")
+        }
+    })
+
+
+    addEvent()
+    initState()
+    
+
+</script>
 {% endblock %}

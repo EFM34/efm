@@ -320,6 +320,87 @@ CheckoutController
 php bin/console make:controller Checkout
 
 
+Gestion des addresses
+
+Entity 
+php bin/console make:entity Address
+
+name             string    255     null no 
+client_name      string    255     null no
+street           string    255     null no
+postal_code      string    255     null yes
+city             string    255     null no 
+state            string    255     null no
+more_details     text              null yes
+address_type     string    255     null yes
+updated_at       datetime_immutable     null yes
+created_at       datetime_immutable     null no
+
+
+
+On doit créée une relation entre l'entity Adresse et User 
+php bin/console make:entity Address
+
+On vas ajouter a notre entity Address un champ user 
+et nous demande le type et se une relation 
+
+PS C:\Users\gheor\Desktop\association\efm> php bin/console make:entity Address
+ Your entity already exists! So let's add some new fields!
+
+ New property name (press <return> to stop adding fields):
+ > user
+
+ Field type (enter ? to see all types) [string]:
+ > relation
+
+ What class should this entity be related to?:
+ > User
+
+What type of relationship is this?
+ ------------ -------------------------------------------------------------------- 
+  Type         Description                                                         
+ ------------ --------------------------------------------------------------------
+  ManyToOne    Each Address relates to (has) one User.
+               Each User can relate to (can have) many Address objects.
+
+  OneToMany    Each Address can relate to (can have) many User objects.
+               Each User relates to (has) one Address.
+
+  ManyToMany   Each Address can relate to (can have) many User objects.
+               Each User can also relate to (can also have) many Address objects.
+
+  OneToOne     Each Address relates to (has) exactly one User.
+               Each User also relates to (has) exactly one Address.
+ ------------ --------------------------------------------------------------------
+
+ Relation type? [ManyToOne, OneToMany, ManyToMany, OneToOne]:
+ > ManyToOne
+
+ Is the Address.user property allowed to be null (nullable)? (yes/no) [yes]:
+ > no
+
+ Do you want to add a new property to User so that you can access/update Address objects from it - e.g. $user->getAddresses()? (yes/no) [yes]:
+ > 
+
+ A new property will also be added to the User class so that you can access the related Address objects from it.
+
+ New field name inside User [addresses]:
+ >
+
+ Do you want to activate orphanRemoval on your relationship?
+ A Address is "orphaned" when it is removed from its related User.
+ e.g. $user->removeAddress($address)
+
+ NOTE: If a Address may *change* from one User to another, answer "no".
+
+ Do you want to automatically delete orphaned App\Entity\Address objects (orphanRemoval)? (yes/no) [no]:
+ >   
+
+ updated: src/Entity/Address.php
+ updated: src/Entity/User.php
+
+ Add another property? Enter the property name (or press <return> to stop adding fields):
+ >  
 
 
 
@@ -327,14 +408,143 @@ php bin/console make:controller Checkout
 
 
 
+Un fois fini on doit faire la préparation de la migration 
+php bin/console make:migration
+
+
+On envois en BDD la migration 
+php bin/console doctrine:migrations:migrate
+
+
+On prepare la créeation du CRUD pour les Address
+
+php bin/console make:admin:crud 
+
+PS C:\Users\gheor\Desktop\association\efm> php bin/console make:admin:crud 
+
+ Which Doctrine entity are you going to manage with this CRUD controller?:
+  [0] App\Entity\Address      Choix 0 
+  [1] App\Entity\Category
+  [2] App\Entity\Collection
+  [3] App\Entity\Page
+  [4] App\Entity\Product
+  [5] App\Entity\Setting
+  [6] App\Entity\Sliders
+  [7] App\Entity\User
+ > 0
+
+Which directory do you want to generate the CRUD controller in? [src/Controller/Admin/]:
+ >
+
+Namespace of the generated CRUD controller [App\Controller\Admin]:
+ >
+
+
+[OK] Your CRUD controller class has been successfully generated.                                     
+                                                                                                      
+
+Next steps:
+* Configure your controller at "src/Controller/Admin/AddressCrudController.php"
+* Read
+
+
+CRUD cote client Interface Utilisateur 
+On vas génére un CRUD pour le côte client et pour l'interface utilisateur
+
+php bin/console make:crud 
+Address   (pour L'entity Address)
+
+On lese par default le nom du controller 
+AddressController
+
+
+
+On ajoute le champs de quel type d'adresse on parle en plus pour notre addresse
+
+Champ sur l’entity Address a ajouté en plus 
+address_type     string    255     null yes
+
+On prépare la migration 
+php bin/console make:migration
+
+Et on l'envois en Bdd 
+php bin/console doctrine:migrations:migrate
+
+
+
+1) On vas créer un Controller pour stocker dans un 
+dossier api tout les apis Api/ApiAddrress
+php bin/console make:controller Api\ApiAddress
+
+
+
+Gestion des Transporteurs
+
+Entity 
+php bin/console make:entity Carrier
+
+name                  string      255      null no 
+description           text                 null yes
+price                 integer              null no
+created_at            datetime_immutable   null no 
+updated_at            datetime_immutable   null yes
+
+php bin/console make:migration
+php bin/console doctrine:migrations:migrate
+
+On créer le CRUD pour l'entity Carrier
+php bin/console make:admin:crud 
+
+Which Doctrine entity are you going to manage with this CRUD controller?:
+  [0] App\Entity\Address
+  [1] App\Entity\Carrier             (Choix 1)
+  [2] App\Entity\Category
+  [3] App\Entity\Collection
+  [4] App\Entity\Page
+  [5] App\Entity\Product
+  [6] App\Entity\Setting
+  [7] App\Entity\Sliders
+  [8] App\Entity\User
+ > 1
+ Which directory do you want to generate the CRUD controller in? [src/Controller/Admin/]:
+ >
+ Namespace of the generated CRUD controller [App\Controller\Admin]:
+ >
+ [OK] Your CRUD controller class has been successfully generated.                                      
+                                                                                                       
+ Un fois créé on déclare dans le DashboardAdmin l'affichage
 
 
 
 
+1) On créer le Controller pour Api\ApiCart 
+php bin/console make:controller Api\ApiCart 
 
 
 
 
+0) Orders 
+- client_name 
+- client_address
+- quantity 
+- price_HT  
+- taxe 
+- price_TTC 
+- isPayed
+- status 
+- carrier_price 
+- carrier_name 
+- order_detaiis 
+
+
+0)- OrderDetails 
+- Product_name
+- Product_description 
+- Product_price 
+- quantity 
+- taxe 
+- subtotal 
+- order 
 
 
 main.yaml 

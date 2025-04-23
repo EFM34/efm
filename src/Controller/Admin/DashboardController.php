@@ -2,6 +2,8 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Address;
+use App\Entity\Carrier;
 use App\Entity\User;
 use App\Entity\Product;
 use App\Entity\Setting;
@@ -66,6 +68,9 @@ class DashboardController extends AbstractDashboardController
         // yield MenuItem::section('Users');
         yield MenuItem::linkToCrud('Users', 'fas fa-users', User::class);
 
+        // yield MenuItem::section('Users');
+        yield MenuItem::linkToCrud('Addresses', 'fas fa-address-card', Address::class);
+        
         // yield MenuItem::section('Sliders');
         yield MenuItem::linkToCrud('Pages', 'fas fa-file', Page::class);
 
@@ -76,6 +81,9 @@ class DashboardController extends AbstractDashboardController
 
         // yield MenuItem::section('Sliders');
         yield MenuItem::linkToCrud('Sliders', 'fas fa-image', Sliders::class);
+
+        // yield MenuItem::section('Sliders');
+        yield MenuItem::linkToCrud('Carriers', 'fas fa-car', Carrier::class);
 
         // yield MenuItem::section('Settings');
         yield MenuItem::linkToCrud('Settings', 'fas fa-gear', Setting::class);

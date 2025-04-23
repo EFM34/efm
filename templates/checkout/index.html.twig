@@ -232,9 +232,10 @@
                                 {% for item in cart.items %}  
                                     <tr>
                                         <td>{{ item.product.name }}
-                                            <span class="product-qty">x {{ item.quantity }}</span>
+                                            <span class="product-qty">{{ item.quantity }}</span>
+                                            <span class="product-price">x {{ (item.product.soldePrice / 100) | format_currency('EUR') }}</span>
                                         </td>
-                                        <td>{{ (item.product.soldePrice / 100) | format_currency('EUR') }}</td>
+                                        <td>{{ (item.product.soldePrice*item.quantity / 100) | format_currency('EUR') }}</td>
                                     </tr>
                                 {% endfor %}
                                 </tbody>
@@ -245,11 +246,11 @@
                                     </tr>
                                     <tr>
                                         <th>Expédition</th>
-                                        <td>Livraison gratuite</td>
+                                        <td>{{ (cart.carrier.price / 100) | format_currency('EUR') }}</td>
                                     </tr>
                                     <tr>
                                         <th>Total</th>
-                                        <td class="product-subtotal">{{ (cart.sub_total / 100) | format_currency('EUR') }}</td>
+                                        <td class="product-subtotal">{{ (cart.sub_total_with_carrier / 100) | format_currency('EUR') }}</td>
                                     </tr>
                                 </tfoot>
                             </table>
@@ -298,7 +299,7 @@
                         </div>
                         <a href="#" class="btn btn-fill-out btn-block">
                             Payer maintenant 
-                            {{ (cart.sub_total / 100) | format_currency('EUR') }}
+                            {{ (cart.sub_total_with_carrier / 100) | format_currency('EUR') }}
                         </a>
                     </div>
                 </div>

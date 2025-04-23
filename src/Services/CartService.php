@@ -2,20 +2,20 @@
 
 namespace App\Services;
 
+use App\Repository\CarrierRepository;
 use App\Repository\ProductRepository;
 use Symfony\Component\HttpFoundation\RequestStack;
-use Symfony\Component\DependencyInjection\Loader\Configurator\session;
 
 class CartService {
 
     public function __construct(
         private RequestStack $requestStack,
         private ProductRepository $productRepo,
+        private CarrierRepository $carrierRepo,
         
     )
     {
         $this->session = $requestStack->getSession();
-        $this->productRepo = $productRepo;
     }
 
     /**
@@ -23,16 +23,16 @@ class CartService {
      *
      * @return void
      */
-    public function getCart()
+    public function get($key)
     {
         // On lui passe un tableau vide par default au panier
-        return $this->session->get("cart", []);
+        return $this->session->get($key, []);
     }
 
-    public function updateCart($cart)
+    public function update($key, $cart)
     {
         // On lui passe le panier et un tableau vide par default
-        return $this->session->set("cart", $cart);
+        return $this->session->set($key, $cart);
     }
 
 
@@ -45,7 +45,7 @@ class CartService {
         // ];
 
         // On recupre le panier courant 
-        $cart = $this->getCart();
+        $cart = $this->get('cart');
 
         // On regarde si ça ne pas vide alors ce que il existe déjà dans le panier
         // Si existe alors on ajoute par deçu la nouvelle quantite par deçu
@@ -59,14 +59,14 @@ class CartService {
         }
 
         // On me à jour le panier qui est dans la (session)
-        $this->updateCart($cart);
+        $this->update("cart", $cart);
     }
 
 
     public function removeToCart($productId, $count = 1)
     {
         // Pour supprimer un élément du panier on doit d'abord récupérer le panier
-        $cart = $this->getCart();
+        $cart = $this->get('cart');
         
         // On regadre si on a un element dans la panier et si se diferent de null
         if(isset($cart[$productId])){
@@ -81,21 +81,34 @@ class CartService {
                 }
         
             // Et on fait la mise à jour du panier 
-            $this->updateCart($cart);
+            $this->update("cart", $cart);
         }
     }
 
 
-    /**
-     * Cette methode a pour but initialiser et de nettoyer le panier 
-     *
-     * @return void
-     */
-    public function clearProductFromCart()
+    // /**
+    //  * Cette methode a pour but initialiser et de nettoyer le panier 
+    //  *
+    //  * @return void
+    //  */
+    // public function clearProductFromCart()
+    // {
+    //     // Et on fait la mise à jour de panier 
+    //     // En lui donne un tableau vide comme ça on initalise le panier
+    //      $this->updateCart([]);
+    // }
+
+    public function clearCart()
     {
         // Et on fait la mise à jour de panier 
         // En lui donne un tableau vide comme ça on initalise le panier
-         $this->updateCart([]);
+         $this->update("cart", []);
+    }
+
+    public function updateCarrier($carrier)
+    {
+        // Et on fait la mise à jour de carrier eton donne la valeur
+         $this->update("carrier", $carrier);
     }
 
 
@@ -104,7 +117,7 @@ class CartService {
         // A pour but de récupérer les détails du panier
 
         // On récupérer le panier
-        $cart = $this->getCart();
+        $cart = $this->get('cart');
         // On initialise le tablau result
         $result = [
             "items" =>  [],
@@ -148,11 +161,33 @@ class CartService {
                 // Si  l'id ça n'existe pas on retire du panier 
                 unset($cart[$productId]);
                 // Et on met à jour le panier
-                $this->updateCart($cart);
+                $this->update("cart", $cart);
             }
         }
-        
 
+        // On récupére le transporteur 
+        $carrier = $this->get("carrier");
+        // Si ça n'existe pas 
+        if(!$carrier){
+            // On récupere de la bdd le transporteur
+            $carrier = $this->carrierRepo->findAll()[0];
+            // On extrait les informations qi nous sont utiles
+            $carrier = [
+                "id" => $carrier->getId(),
+                "name" => $carrier->getName(),
+                "description" => $carrier->getDescription(),
+                "price" => $carrier->getPrice(),
+            ];
+            // On récupére le transporteur et on le stock dans notre session pour y acceder plus tard
+            $carrier = $this->update("carrier", $carrier);
+        }
+
+        // On récupere le result et on le stock dans le carrier
+        $result["carrier"] = $carrier;
+        $result["sub_total_with_carrier"] = $result['sub_total'] + $carrier["price"];
+
+
+        
         return $result;
     }
 

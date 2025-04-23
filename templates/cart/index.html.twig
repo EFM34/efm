@@ -7,7 +7,10 @@
 {% include "page_head/page_head.html.twig" with {'page_name': "Panier"} %}
 
 {# Le data-cart on récupére les données du panier  #}
-<div class="main_content cart_content" data-cart="{{cart_json}}">
+<div class="main_content cart_content" 
+data-cart="{{cart_json}}"
+data-carriers="{{carriers_json}}"
+>
     <div class="section">
         <div class="container">
             <div class="row">
@@ -61,6 +64,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="row">
                 <div class="col-12">
                     <div class="medium_divider"></div>
@@ -70,8 +74,21 @@
                     <div class="medium_divider"></div>
                 </div>
             </div>
+
             <div class="row">
-                <div class="col-md-6"></div>
+                <div class="col-md-6">
+                    <div class="border p-3 p-md-4 carrier_form">
+                        <div class="heading_s1 mb-3">
+                            <h6>Choisissez votre Transporteur</h6>
+                        </div>
+                        <form action="/cart/carrier" method="post">
+                            <select name="carrierId" 
+                                value="{{cart.carrier.id}}" 
+                                id="carrier" class="form-control">
+                            </select>
+                        </form> 
+                    </div>
+                </div>
                 <div class="col-md-6">
                     <div class="border p-3 p-md-4">
                         <div class="heading_s1 mb-3">
@@ -82,11 +99,11 @@
                                 <tbody>
                                     <tr>
                                         <td class="cart_total_label">Sous-total panier</td>
-                                        <td class="cart_total_amount"></td>
+                                        <td class="cart_sub_total_amount"></td>
                                     </tr>
                                     <tr>
                                         <td class="cart_total_label">Expédition</td>
-                                        <td class="cart_total_amount">Livraison gratuite</td>
+                                        <td class="cart_shipping_total_amount">Livraison gratuite</td>
                                     </tr>
                                     <tr>
                                         <td class="cart_total_label">Total</td>
@@ -106,3 +123,45 @@
 </div>
 
 {% endblock %}
+
+{# {% block javascripts %}
+    <script>
+        const form = document.querySelector(".carrier_form form")
+        const select = document.querySelector(".carrier_form select")
+        let mainContent = document.querySelector(".cart_content")
+
+        // On regarde si cart est definie
+        cart = mainContent ? JSON.parse(mainContent.dataset.cart)  : false
+        carriers = mainContent ? JSON.parse(mainContent.dataset.carriers)  : false
+
+    console.log(carriers);
+    
+
+        if(cart){
+            select.innerHTML = ""
+            carriers.items.forEach(carrier => {
+               if(carrier.is == cart.carrier.id) {
+                    select.innerHTML += `
+                        <option 
+                            value="${ carrier.id }" selected>
+                            ${ carrier.name } ( ${formatPrice(carrier.price /100)} )
+                        </option>
+                    `
+               } else {
+                   select.innerHTML += `
+                    <option 
+                        value="${ carrier.id }">
+                        ${ carrier.name } ( ${formatPrice(carrier.price /100)} )
+                    </option>
+                   `
+               }
+            });
+        }
+        
+        const handleSubmit = (event) =>{
+            enent.preventDefault();
+
+        }
+        form.addEventListener('submit', handleSubmit)
+    </script>
+{% endblock %} #}
