@@ -521,30 +521,143 @@ Which Doctrine entity are you going to manage with this CRUD controller?:
 php bin/console make:controller Api\ApiCart 
 
 
-
-
-0) Orders 
-- client_name 
-- client_address
-- quantity 
+On créer l'entité Order
+php bin/console make:entity Order
+0) Order
+- client_name            string     255  null no 
+- delivery_address       text            null yes 
+- quantity               integer         null no
+- order_cost             integer         null no
+- order_cost_ttc         integer         null no
 - price_HT  
-- taxe 
+- taxe                   integer         null yes 
 - price_TTC 
-- isPayed
-- status 
-- carrier_price 
-- carrier_name 
-- order_detaiis 
+- isPaid                 boolean         null yes
+- status                 string    255   null no 
+- carrier_id             integer         null no 
+- carrier_price          integer         null no
+- carrier_name           string    255   null no 
+- order_details 
+- updated_at             datetime_immutable    null  yes
+- created_at             datetime_immutable    null  no 
+
+php bin/console make:migration
+php bin/console doctrine:migrations:migrate
 
 
+
+On créer l'entité OrderDetails
+php bin/console make:entity OrderDetails
 0)- OrderDetails 
-- Product_name
-- Product_description 
-- Product_price 
-- quantity 
-- taxe 
-- subtotal 
-- order 
+- product_name              string     255   null no
+- product_description       string     255   null no
+- product_solde_price       integer          null no 
+- product_regular_price     integer          null no 
+- quantity                  integer          null no
+- taxe                      integer          null yes
+- subtotal                  integer          null no
+- myOrder                   (relation  Order)   ManyToOne  null no  
+- updated_at                datetime_immutable    null yes 
+- created_at                datetime_immutable    null no 
+
+php bin/console make:migration
+php bin/console doctrine:migrations:migrate
+
+
+On créer le CRUD pour 
+php bin/console make:admin:crud
+
+PS C:\Users\gheor\Desktop\association\efm> php bin/console make:admin:crud
+
+ Which Doctrine entity are you going to manage with this CRUD controller?:
+  [0 ] App\Entity\Address
+  [1 ] App\Entity\Carrier
+  [2 ] App\Entity\Category
+  [3 ] App\Entity\Collection
+  [4 ] App\Entity\Order
+  [5 ] App\Entity\OrderDetails
+  [6 ] App\Entity\Page
+  [7 ] App\Entity\Product
+  [8 ] App\Entity\Setting
+  [9 ] App\Entity\Sliders
+  [10] App\Entity\User
+  > 4
+
+  Which directory do you want to generate the CRUD controller in? [src/Controller/Admin/]:
+  > 
+
+  Namespace of the generated CRUD controller [App\Controller\Admin]:
+  > 
+  
+  [OK] Your CRUD controller class has been successfully generated.
+
+
+  Next steps:
+  * Configure your controller at "src/Controller/Admin/OrderCrudController.php"
+  * Read EasyAdmin docs: https://symfony.com/doc/master/bundles/EasyAdminBundle/index.html
+
+
+
+
+
+On créer l'entité PaymentMethod
+php bin/console make:entity PaymentMethod
+0)- PaymentMethod 
+- name                      string     255   null no
+- description               string     255   null no
+- more_description          text             null yes
+- imageUrl                  string     255   null yes 
+- test_public_api_key       text             null yes 
+- test_private_api_key      text             null yes 
+- prod_public_api_key       text             null yes 
+- prod_private_api_key      text             null yes 
+- updated_at                datetime_immutable    null yes 
+- created_at                datetime_immutable    null no 
+
+php bin/console make:migration
+php bin/console doctrine:migrations:migrate
+
+
+On créer le CRUD pour 
+php bin/console make:admin:crud
+
+PS C:\Users\gheor\Desktop\association\efm> php bin/console make:admin:crud
+
+ Which Doctrine entity are you going to manage with this CRUD controller?:
+  [0 ] App\Entity\Address
+  [1 ] App\Entity\Carrier
+  [2 ] App\Entity\Category
+  [3 ] App\Entity\Collection
+  [4 ] App\Entity\OrderDetails
+  [5 ] App\Entity\Orders
+  [6 ] App\Entity\Page
+  [7 ] App\Entity\PaymentMethod      (choix 7)
+  [8 ] App\Entity\Product
+  [9 ] App\Entity\Setting
+  [10] App\Entity\Sliders
+  [11] App\Entity\User   
+ > 7
+
+ Which directory do you want to generate the CRUD controller in? [src/Controller/Admin/]:
+ > 
+
+ Namespace of the generated CRUD controller [App\Controller\Admin]:
+ > 
+
+
+ [OK] Your CRUD controller class has been successfully generated.
+
+
+ Next steps:
+ * Configure your controller at "src/Controller/Admin/PaymentMethodCrudController.php"
+ * Read EasyAdmin docs: https://symfony.com/doc/master/bundles/EasyAdminBundle/index.html  
+
+ 
+
+
+
+
+
 
 
 main.yaml 

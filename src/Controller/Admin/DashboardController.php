@@ -10,7 +10,10 @@ use App\Entity\Setting;
 use App\Entity\Sliders;
 use App\Entity\Category;
 use App\Entity\Collection;
+use App\Entity\Order;
+use App\Entity\Orders;
 use App\Entity\Page;
+use App\Entity\PaymentMethod;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
@@ -81,6 +84,12 @@ class DashboardController extends AbstractDashboardController
 
         // yield MenuItem::section('Sliders');
         yield MenuItem::linkToCrud('Sliders', 'fas fa-image', Sliders::class);
+
+        // yield MenuItem::section('Sliders');
+        yield MenuItem::linkToCrud('Orders', 'fas fa-shopping-cart', Orders::class);
+
+        // yield MenuItem::section('Sliders');
+        yield MenuItem::linkToCrud('Payment methods', 'fas fa-landmark', PaymentMethod::class);
 
         // yield MenuItem::section('Sliders');
         yield MenuItem::linkToCrud('Carriers', 'fas fa-car', Carrier::class);
